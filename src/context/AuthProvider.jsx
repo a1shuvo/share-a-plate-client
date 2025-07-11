@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
+  getAuth,
   GoogleAuthProvider,
-  signInWithPopup,
-  updateProfile,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
+import { useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 import { AuthContext } from "./AuthContext";
 
@@ -47,23 +47,6 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-
-      if (currentUser) {
-        const token = await currentUser.getIdToken();
-        fetch(`${import.meta.env.VITE_API_URL}/users/upsert`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            name: currentUser.displayName,
-            email: currentUser.email,
-            image: currentUser.photoURL,
-            isGoogleUser: currentUser.providerData[0]?.providerId === "google.com",
-          }),
-        });
-      }
     });
 
     return () => unsubscribe();
@@ -80,9 +63,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={authInfo}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 
