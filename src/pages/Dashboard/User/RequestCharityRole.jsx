@@ -2,13 +2,15 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import CheckoutWrapper from "../../../components/payment/CheckoutWrapper";
 import { useAuth } from "../../../hooks/useAuth";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 
 const RequestCharityRole = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const [processing, setProcessing] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState(null); // Holds form input to pass to CheckoutWrapper
 
   const {
     register,
@@ -16,8 +18,8 @@ const RequestCharityRole = () => {
     formState: { errors },
   } = useForm();
 
-  // Check if user already has a request
-  const { data: existingRequest } = useQuery({
+  // Fetch existing role request
+  const { data: existingRequest, isLoading } = useQuery({
     queryKey: ["roleRequest", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/role-requests/user/${user.email}`);
@@ -26,7 +28,8 @@ const RequestCharityRole = () => {
     enabled: !!user?.email,
   });
 
-  const onSubmit = async (data) => {
+  // Handle form submit → open modal
+  const onSubmit = (data) => {
     if (
       existingRequest?.status === "Pending" ||
       existingRequest?.status === "Approved"
@@ -35,76 +38,39 @@ const RequestCharityRole = () => {
         icon: "info",
         title: "Request Exists",
         text: `You already have a ${existingRequest.status} request.`,
-        timer: 1800,
-        showConfirmButton: false,
-      });
-    }
-
-    try {
-      setProcessing(true);
-
-      // Simulated Stripe payment (replace with Stripe Elements in real)
-      const payment = await axiosSecure.post("/create-payment-intent", {
-        amount: 2500,
-        email: user.email,
-      });
-
-      const transactionId = payment.data.transactionId;
-
-      // Save role request
-      await axiosSecure.post("/role-requests", {
-        email: user.email,
-        name: user.displayName,
-        organizationName: data.organizationName,
-        missionStatement: data.missionStatement,
-        transactionId,
-        status: "Pending",
-      });
-
-      // Save transaction
-      await axiosSecure.post("/transactions", {
-        transactionId,
-        amount: 2500,
-        date: new Date(),
-        email: user.email,
-        purpose: "Charity Role Request",
-        status: "Pending",
-      });
-
-      Swal.fire({
-        icon: "success",
-        title: "Request Submitted",
-        text: "Your request is now pending admin approval.",
         timer: 2000,
         showConfirmButton: false,
       });
-    } catch (err) {
-      Swal.fire("Payment Failed", err.message, "error");
-    } finally {
-      setProcessing(false);
     }
+
+    setFormData(data);
+    setShowModal(true);
   };
 
   return (
     <div className="max-w-xl mx-auto bg-white p-6 rounded shadow">
       <h2 className="text-xl font-bold mb-4">Request Charity Role</h2>
 
-      {existingRequest?.status === "Pending" ||
-      existingRequest?.status === "Approved" ? (
+      {isLoading ? (
+        <p className="text-center text-gray-500">
+          Checking existing request...
+        </p>
+      ) : existingRequest?.status === "Pending" ||
+        existingRequest?.status === "Approved" ? (
         <p className="bg-gray-100 p-4 text-center rounded">
           You already have a <strong>{existingRequest.status}</strong> role
           request.
         </p>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {/* Name - readonly */}
+          {/* Name (readonly) */}
           <input
             className="input input-bordered w-full"
             value={user?.displayName}
             readOnly
           />
 
-          {/* Email - readonly */}
+          {/* Email (readonly) */}
           <input
             className="input input-bordered w-full"
             value={user?.email}
@@ -139,15 +105,31 @@ const RequestCharityRole = () => {
             </p>
           )}
 
-          {/* Submit */}
-          <button
-            type="submit"
-            className="btn btn-primary w-full"
-            disabled={processing}
-          >
-            {processing ? "Processing..." : "Pay $25 & Request"}
+          <button type="submit" className="btn btn-primary w-full">
+            Pay $25 & Request
           </button>
         </form>
+      )}
+
+      {/* Stripe Payment Modal */}
+      {showModal && formData && (
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
+          <div className="relative bg-white p-6 rounded-lg w-full max-w-md shadow-xl">
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-2 right-2 text-gray-600 hover:text-red-600"
+            >
+              ✕
+            </button>
+            <h3 className="text-lg font-bold mb-4">Complete Your Payment</h3>
+            {/* CheckoutWrapper renders Stripe Elements & handles API calls */}
+            <CheckoutWrapper
+              formData={formData}
+              onClose={() => setShowModal(false)}
+              user={user}
+            />
+          </div>
+        </div>
       )}
     </div>
   );
