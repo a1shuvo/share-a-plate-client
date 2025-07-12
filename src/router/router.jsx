@@ -7,6 +7,7 @@ import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard";
 import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
+import ManageRoleRequests from "../pages/Dashboard/Admin/ManageRoleRequests";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import Favorites from "../pages/Dashboard/User/Favorites";
 import MyProfile from "../pages/Dashboard/User/MyProfile";
@@ -138,14 +139,14 @@ const router = createBrowserRouter([
       //     </RoleRoute>
       //   ),
       // },
-      // {
-      //   path: "admin/manage-role-requests",
-      //   element: (
-      //     <RoleRoute allowedRoles={["admin"]}>
-      //       <ManageRoleRequests />
-      //     </RoleRoute>
-      //   ),
-      // },
+      {
+        path: "admin/manage-role-requests",
+        element: (
+          <RoleRoute allowedRoles={["admin"]}>
+            <ManageRoleRequests />
+          </RoleRoute>
+        ),
+      },
       // {
       //   path: "admin/manage-requests",
       //   element: (
