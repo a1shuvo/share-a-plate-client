@@ -12,6 +12,7 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import CharityDashboard from "../pages/Dashboard/Charity/CharityDashboard";
 import CharityProfile from "../pages/Dashboard/Charity/CharityProfile";
 import CharityTransactionHistory from "../pages/Dashboard/Charity/CharityTransactionHistory";
+import RestaurantDashboard from "../pages/Dashboard/Restaurant/RestaurantDashboard";
 import Favorites from "../pages/Dashboard/User/Favorites";
 import MyProfile from "../pages/Dashboard/User/MyProfile";
 import MyReviews from "../pages/Dashboard/User/MyReviews";
@@ -216,6 +217,48 @@ const router = createBrowserRouter([
           </RoleRoute>
         ),
       },
+
+      // ===== RESTAURANT ROUTES =====
+      {
+        path: "restaurant",
+        element: (
+          <RoleRoute allowedRoles={["restaurant"]}>
+            <RestaurantDashboard />
+          </RoleRoute>
+        ),
+      },
+      // {
+      //   path: "restaurant/profile",
+      //   element: (
+      //     <RoleRoute allowedRoles={["restaurant"]}>
+      //       <RestaurantProfile />
+      //     </RoleRoute>
+      //   ),
+      // },
+      // {
+      //   path: "add-donation",
+      //   element: (
+      //     <RoleRoute allowedRoles={["restaurant"]}>
+      //       <AddDonation />
+      //     </RoleRoute>
+      //   ),
+      // },
+      // {
+      //   path: "restaurant/my-donations",
+      //   element: (
+      //     <RoleRoute allowedRoles={["restaurant"]}>
+      //       <MyDonations />
+      //     </RoleRoute>
+      //   ),
+      // },
+      // {
+      //   path: "restaurant/requests",
+      //   element: (
+      //     <RoleRoute allowedRoles={["restaurant"]}>
+      //       <RequestedDonations />
+      //     </RoleRoute>
+      //   ),
+      // },
     ],
   },
   {
