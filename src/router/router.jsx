@@ -10,6 +10,8 @@ import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
 import ManageRoleRequests from "../pages/Dashboard/Admin/ManageRoleRequests";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import CharityDashboard from "../pages/Dashboard/Charity/CharityDashboard";
+import CharityProfile from "../pages/Dashboard/Charity/CharityProfile";
+import CharityTransactionHistory from "../pages/Dashboard/Charity/CharityTransactionHistory";
 import Favorites from "../pages/Dashboard/User/Favorites";
 import MyProfile from "../pages/Dashboard/User/MyProfile";
 import MyReviews from "../pages/Dashboard/User/MyReviews";
@@ -20,7 +22,6 @@ import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
 import PrivateRoute from "../routes/PrivateRoute";
 import RoleRoute from "../routes/RoleRoute";
-import CharityProfile from "../pages/Dashboard/Charity/CharityProfile";
 
 // Dashboard Pages (by role)
 
@@ -207,14 +208,14 @@ const router = createBrowserRouter([
       //     </RoleRoute>
       //   ),
       // },
-      // {
-      //   path: "charity/transactions",
-      //   element: (
-      //     <RoleRoute allowedRoles={["charity"]}>
-      //       <TransactionHistory />
-      //     </RoleRoute>
-      //   ),
-      // },
+      {
+        path: "charity/transactions",
+        element: (
+          <RoleRoute allowedRoles={["charity"]}>
+            <CharityTransactionHistory />
+          </RoleRoute>
+        ),
+      },
     ],
   },
   {
