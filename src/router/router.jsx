@@ -20,6 +20,7 @@ import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
 import PrivateRoute from "../routes/PrivateRoute";
 import RoleRoute from "../routes/RoleRoute";
+import CharityProfile from "../pages/Dashboard/Charity/CharityProfile";
 
 // Dashboard Pages (by role)
 
@@ -174,14 +175,14 @@ const router = createBrowserRouter([
           </RoleRoute>
         ),
       },
-      // {
-      //   path: "charity/profile",
-      //   element: (
-      //     <RoleRoute allowedRoles={["charity"]}>
-      //       <CharityProfile />
-      //     </RoleRoute>
-      //   ),
-      // },
+      {
+        path: "charity/profile",
+        element: (
+          <RoleRoute allowedRoles={["charity"]}>
+            <CharityProfile />
+          </RoleRoute>
+        ),
+      },
       // {
       //   path: "charity/my-requests",
       //   element: (
