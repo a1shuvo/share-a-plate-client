@@ -13,8 +13,10 @@ import CharityDashboard from "../pages/Dashboard/Charity/CharityDashboard";
 import CharityProfile from "../pages/Dashboard/Charity/CharityProfile";
 import CharityTransactionHistory from "../pages/Dashboard/Charity/CharityTransactionHistory";
 import AddDonation from "../pages/Dashboard/Restaurant/AddDonation";
+import MyDonations from "../pages/Dashboard/Restaurant/MyDonations";
 import RestaurantDashboard from "../pages/Dashboard/Restaurant/RestaurantDashboard";
 import RestaurantProfile from "../pages/Dashboard/Restaurant/RestaurantProfile";
+import UpdateDonation from "../pages/Dashboard/Restaurant/UpdateDonation";
 import Favorites from "../pages/Dashboard/User/Favorites";
 import MyProfile from "../pages/Dashboard/User/MyProfile";
 import MyReviews from "../pages/Dashboard/User/MyReviews";
@@ -245,14 +247,22 @@ const router = createBrowserRouter([
           </RoleRoute>
         ),
       },
-      // {
-      //   path: "restaurant/my-donations",
-      //   element: (
-      //     <RoleRoute allowedRoles={["restaurant"]}>
-      //       <MyDonations />
-      //     </RoleRoute>
-      //   ),
-      // },
+      {
+        path: "restaurant/my-donations",
+        element: (
+          <RoleRoute allowedRoles={["restaurant"]}>
+            <MyDonations />
+          </RoleRoute>
+        ),
+      },
+      {
+        path: "update-donation/:id",
+        element: (
+          <RoleRoute allowedRoles={["restaurant"]}>
+            <UpdateDonation />
+          </RoleRoute>
+        ),
+      },
       // {
       //   path: "restaurant/requests",
       //   element: (
