@@ -5,6 +5,9 @@ import MainLayout from "../layouts/MainLayout";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
+import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard";
+import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import Favorites from "../pages/Dashboard/User/Favorites";
 import MyProfile from "../pages/Dashboard/User/MyProfile";
 import MyReviews from "../pages/Dashboard/User/MyReviews";
@@ -52,6 +55,7 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      // ===== USER ROUTES =====
       {
         path: "user",
         element: (
@@ -100,6 +104,64 @@ const router = createBrowserRouter([
           </RoleRoute>
         ),
       },
+
+      // ===== ADMIN ROUTES =====
+      {
+        path: "admin",
+        element: (
+          <RoleRoute allowedRoles={["admin"]}>
+            <AdminDashboard />
+          </RoleRoute>
+        ),
+      },
+      {
+        path: "admin/profile",
+        element: (
+          <RoleRoute allowedRoles={["admin"]}>
+            <AdminProfile />
+          </RoleRoute>
+        ),
+      },
+      {
+        path: "admin/manage-users",
+        element: (
+          <RoleRoute allowedRoles={["admin"]}>
+            <ManageUsers />
+          </RoleRoute>
+        ),
+      },
+      // {
+      //   path: "admin/manage-donations",
+      //   element: (
+      //     <RoleRoute allowedRoles={["admin"]}>
+      //       <ManageDonations />
+      //     </RoleRoute>
+      //   ),
+      // },
+      // {
+      //   path: "admin/manage-role-requests",
+      //   element: (
+      //     <RoleRoute allowedRoles={["admin"]}>
+      //       <ManageRoleRequests />
+      //     </RoleRoute>
+      //   ),
+      // },
+      // {
+      //   path: "admin/manage-requests",
+      //   element: (
+      //     <RoleRoute allowedRoles={["admin"]}>
+      //       <ManageRequests />
+      //     </RoleRoute>
+      //   ),
+      // },
+      // {
+      //   path: "admin/feature-donations",
+      //   element: (
+      //     <RoleRoute allowedRoles={["admin"]}>
+      //       <FeatureDonations />
+      //     </RoleRoute>
+      //   ),
+      // },
     ],
   },
   {

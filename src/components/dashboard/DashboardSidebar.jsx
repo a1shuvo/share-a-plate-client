@@ -4,6 +4,8 @@ import {
   FaClipboardList,
   FaDollarSign,
   FaDonate,
+  FaEnvelopeOpenText,
+  FaHandHoldingHeart,
   FaHandsHelping,
   FaHeart,
   FaHome,
@@ -15,18 +17,27 @@ import {
 } from "react-icons/fa";
 import { NavLink } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
+import { useAxiosSecure } from "../../hooks/useAxiosSecure";
 
 const DashboardSidebar = ({ isMobile, closeSidebar }) => {
   const { user } = useAuth();
-  const [role, setRole] = useState("user"); // Default role
+  const axiosSecure = useAxiosSecure();
+  const [role, setRole] = useState("");
 
-  // TODO: Replace with real role fetch or useUserRole()
   useEffect(() => {
-    // Simulate backend role fetch
-    setTimeout(() => {
-      setRole(user?.role || "user");
-    }, 100);
-  }, [user]);
+    const fetchUserRole = async () => {
+      if (user?.email) {
+        try {
+          const res = await axiosSecure.get(`/users/${user.email}`);
+          setRole(res.data.role || "user");
+        } catch (error) {
+          console.error("Failed to fetch user role:", error);
+        }
+      }
+    };
+
+    fetchUserRole();
+  }, [user, axiosSecure]);
 
   const navLinkClass = ({ isActive }) =>
     `flex items-center gap-2 px-4 py-2 rounded-md hover:bg-primary hover:text-white transition duration-200 ${
@@ -48,33 +59,49 @@ const DashboardSidebar = ({ isMobile, closeSidebar }) => {
           <FaHome /> Home
         </NavLink>
 
-        {/* Role-based links */}
+        {/* Admin Routes */}
         {role === "admin" && (
           <>
-            <NavLink
-              to="/dashboard/admin"
-              className={navLinkClass}
-              onClick={closeSidebar}
-            >
-              <FaChartBar /> Overview
+            <NavLink to="/dashboard/admin" className={navLinkClass}>
+              <FaTachometerAlt /> Dashboard
+            </NavLink>
+            <NavLink to="/dashboard/admin/profile" className={navLinkClass}>
+              <FaUser /> Admin Profile
             </NavLink>
             <NavLink
-              to="/dashboard/users"
+              to="/dashboard/admin/manage-users"
               className={navLinkClass}
-              onClick={closeSidebar}
             >
               <FaUsers /> Manage Users
             </NavLink>
             <NavLink
-              to="/dashboard/reports"
+              to="/dashboard/admin/manage-donations"
               className={navLinkClass}
-              onClick={closeSidebar}
             >
-              <FaClipboardList /> Review Reports
+              <FaClipboardList /> Manage Donations
+            </NavLink>
+            <NavLink
+              to="/dashboard/admin/manage-role-requests"
+              className={navLinkClass}
+            >
+              <FaHandHoldingHeart /> Manage Role Requests
+            </NavLink>
+            <NavLink
+              to="/dashboard/admin/manage-requests"
+              className={navLinkClass}
+            >
+              <FaEnvelopeOpenText /> Manage Requests
+            </NavLink>
+            <NavLink
+              to="/dashboard/admin/feature-donations"
+              className={navLinkClass}
+            >
+              <FaStar /> Feature Donations
             </NavLink>
           </>
         )}
 
+        {/* Restaurant Routes */}
         {role === "restaurant" && (
           <>
             <NavLink
@@ -94,6 +121,7 @@ const DashboardSidebar = ({ isMobile, closeSidebar }) => {
           </>
         )}
 
+        {/* Charity Routes */}
         {role === "charity" && (
           <>
             <NavLink
@@ -113,30 +141,26 @@ const DashboardSidebar = ({ isMobile, closeSidebar }) => {
           </>
         )}
 
+        {/* Regular User Routes */}
         {role === "user" && (
           <>
             <NavLink to="/dashboard/user" className={navLinkClass}>
-              <FaTachometerAlt className="text-lg" /> Dashboard
+              <FaTachometerAlt /> Dashboard
             </NavLink>
-
             <NavLink to="/dashboard/user/profile" className={navLinkClass}>
-              <FaUser className="text-lg" /> My Profile
+              <FaUser /> My Profile
             </NavLink>
-
             <NavLink to="/dashboard/upgrade-role" className={navLinkClass}>
-              <FaHandsHelping className="text-lg" /> Request Charity Role
+              <FaHandsHelping /> Request Charity Role
             </NavLink>
-
             <NavLink to="/dashboard/user/favorites" className={navLinkClass}>
-              <FaHeart className="text-lg" /> Favorites
+              <FaHeart /> Favorites
             </NavLink>
-
             <NavLink to="/dashboard/user/reviews" className={navLinkClass}>
-              <FaStar className="text-lg" /> My Reviews
+              <FaStar /> My Reviews
             </NavLink>
-
             <NavLink to="/dashboard/user/transactions" className={navLinkClass}>
-              <FaDollarSign className="text-lg" /> Transaction History
+              <FaDollarSign /> Transaction History
             </NavLink>
           </>
         )}
