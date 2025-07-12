@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  FaChartBar,
   FaClipboardList,
   FaDollarSign,
   FaEnvelopeOpenText,
@@ -13,6 +12,7 @@ import {
   FaTachometerAlt,
   FaUser,
   FaUsers,
+  FaUtensils,
 } from "react-icons/fa";
 import { NavLink } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
@@ -108,14 +108,39 @@ const DashboardSidebar = ({ isMobile, closeSidebar }) => {
               className={navLinkClass}
               onClick={closeSidebar}
             >
-              <FaChartBar /> My Donations
+              <FaTachometerAlt className="text-lg" /> Dashboard
             </NavLink>
+
+            <NavLink
+              to="/dashboard/restaurant/profile"
+              className={navLinkClass}
+              onClick={closeSidebar}
+            >
+              <FaUser className="text-lg" /> Restaurant Profile
+            </NavLink>
+
             <NavLink
               to="/dashboard/add-donation"
               className={navLinkClass}
               onClick={closeSidebar}
             >
-              <FaPlus /> Add Donation
+              <FaPlus className="text-lg" /> Add Donation
+            </NavLink>
+
+            <NavLink
+              to="/dashboard/restaurant/my-donations"
+              className={navLinkClass}
+              onClick={closeSidebar}
+            >
+              <FaUtensils className="text-lg" /> My Donations
+            </NavLink>
+
+            <NavLink
+              to="/dashboard/restaurant/requests"
+              className={navLinkClass}
+              onClick={closeSidebar}
+            >
+              <FaClipboardList className="text-lg" /> Requested Donations
             </NavLink>
           </>
         )}
