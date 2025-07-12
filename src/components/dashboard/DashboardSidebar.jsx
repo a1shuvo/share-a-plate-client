@@ -3,7 +3,6 @@ import {
   FaChartBar,
   FaClipboardList,
   FaDollarSign,
-  FaDonate,
   FaEnvelopeOpenText,
   FaHandHoldingHeart,
   FaHandsHelping,
@@ -129,14 +128,47 @@ const DashboardSidebar = ({ isMobile, closeSidebar }) => {
               className={navLinkClass}
               onClick={closeSidebar}
             >
-              <FaHandsHelping /> My Requests
+              <FaTachometerAlt className="text-lg" /> Dashboard
             </NavLink>
+
             <NavLink
-              to="/dashboard/request-donations"
+              to="/dashboard/charity/profile"
               className={navLinkClass}
               onClick={closeSidebar}
             >
-              <FaDonate /> Available Donations
+              <FaUser className="text-lg" /> Charity Profile
+            </NavLink>
+
+            <NavLink
+              to="/dashboard/charity/my-requests"
+              className={navLinkClass}
+              onClick={closeSidebar}
+            >
+              <FaClipboardList className="text-lg" /> My Requests
+            </NavLink>
+
+            <NavLink
+              to="/dashboard/charity/my-pickups"
+              className={navLinkClass}
+              onClick={closeSidebar}
+            >
+              <FaHandsHelping className="text-lg" /> My Pickups
+            </NavLink>
+
+            <NavLink
+              to="/dashboard/charity/received-donations"
+              className={navLinkClass}
+              onClick={closeSidebar}
+            >
+              <FaHandHoldingHeart className="text-lg" /> Received Donations
+            </NavLink>
+
+            <NavLink
+              to="/dashboard/charity/transactions"
+              className={navLinkClass}
+              onClick={closeSidebar}
+            >
+              <FaDollarSign className="text-lg" /> Transaction History
             </NavLink>
           </>
         )}

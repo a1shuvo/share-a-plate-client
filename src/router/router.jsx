@@ -9,6 +9,7 @@ import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard";
 import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
 import ManageRoleRequests from "../pages/Dashboard/Admin/ManageRoleRequests";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import CharityDashboard from "../pages/Dashboard/Charity/CharityDashboard";
 import Favorites from "../pages/Dashboard/User/Favorites";
 import MyProfile from "../pages/Dashboard/User/MyProfile";
 import MyReviews from "../pages/Dashboard/User/MyReviews";
@@ -160,6 +161,56 @@ const router = createBrowserRouter([
       //   element: (
       //     <RoleRoute allowedRoles={["admin"]}>
       //       <FeatureDonations />
+      //     </RoleRoute>
+      //   ),
+      // },
+
+      // ===== CHARITY ROUTES =====
+      {
+        path: "charity",
+        element: (
+          <RoleRoute allowedRoles={["charity"]}>
+            <CharityDashboard />
+          </RoleRoute>
+        ),
+      },
+      // {
+      //   path: "charity/profile",
+      //   element: (
+      //     <RoleRoute allowedRoles={["charity"]}>
+      //       <CharityProfile />
+      //     </RoleRoute>
+      //   ),
+      // },
+      // {
+      //   path: "charity/my-requests",
+      //   element: (
+      //     <RoleRoute allowedRoles={["charity"]}>
+      //       <MyRequests />
+      //     </RoleRoute>
+      //   ),
+      // },
+      // {
+      //   path: "charity/my-pickups",
+      //   element: (
+      //     <RoleRoute allowedRoles={["charity"]}>
+      //       <MyPickups />
+      //     </RoleRoute>
+      //   ),
+      // },
+      // {
+      //   path: "charity/received-donations",
+      //   element: (
+      //     <RoleRoute allowedRoles={["charity"]}>
+      //       <ReceivedDonations />
+      //     </RoleRoute>
+      //   ),
+      // },
+      // {
+      //   path: "charity/transactions",
+      //   element: (
+      //     <RoleRoute allowedRoles={["charity"]}>
+      //       <TransactionHistory />
       //     </RoleRoute>
       //   ),
       // },
