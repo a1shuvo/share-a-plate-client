@@ -15,6 +15,8 @@ const RequestModal = ({ donation, user, onClose, refetch }) => {
       const res = await axiosSecure.post("/requests", {
         donationId: donation._id,
         title: donation.title,
+        foodType: donation.foodType,
+        quantity: donation.quantity,
         restaurantName: donation.restaurant.name,
         restaurantEmail: donation.restaurant.email,
         charityName: user.displayName,
@@ -101,15 +103,11 @@ const RequestModal = ({ donation, user, onClose, refetch }) => {
             />
           </div>
 
-          <div className="modal-action flex justify-between gap-3">
-            <button type="submit" className="btn btn-primary w-full">
+          <div className="modal-action">
+            <button type="submit" className="btn btn-primary">
               Submit Request
             </button>
-            <button
-              type="button"
-              onClick={onClose}
-              className="btn btn-outline w-full"
-            >
+            <button type="button" onClick={onClose} className="btn btn-outline">
               Cancel
             </button>
           </div>
