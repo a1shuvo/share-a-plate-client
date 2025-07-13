@@ -7,6 +7,7 @@ import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard";
 import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
+import FeatureDonations from "../pages/Dashboard/Admin/FeatureDonations";
 import ManageDonations from "../pages/Dashboard/Admin/ManageDonations";
 import ManageRequests from "../pages/Dashboard/Admin/ManageRequests";
 import ManageRoleRequests from "../pages/Dashboard/Admin/ManageRoleRequests";
@@ -168,14 +169,14 @@ const router = createBrowserRouter([
           </RoleRoute>
         ),
       },
-      // {
-      //   path: "admin/feature-donations",
-      //   element: (
-      //     <RoleRoute allowedRoles={["admin"]}>
-      //       <FeatureDonations />
-      //     </RoleRoute>
-      //   ),
-      // },
+      {
+        path: "admin/feature-donations",
+        element: (
+          <RoleRoute allowedRoles={["admin"]}>
+            <FeatureDonations />
+          </RoleRoute>
+        ),
+      },
 
       // ===== CHARITY ROUTES =====
       {
