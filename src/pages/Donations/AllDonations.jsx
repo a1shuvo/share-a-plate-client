@@ -85,7 +85,7 @@ const AllDonations = () => {
                 </div>
 
                 <Link
-                  to={`/donations/${donation._id}`}
+                  to={`/donation/${donation._id}`}
                   className="btn btn-outline btn-primary mt-4 w-full"
                 >
                   View Details
