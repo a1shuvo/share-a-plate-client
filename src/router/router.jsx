@@ -24,6 +24,7 @@ import MyReviews from "../pages/Dashboard/User/MyReviews";
 import RequestCharityRole from "../pages/Dashboard/User/RequestCharityRole";
 import TransactionHistory from "../pages/Dashboard/User/TransactionHistory";
 import UserDashboard from "../pages/Dashboard/User/UserDashboard";
+import AllDonations from "../pages/Donations/AllDonations";
 import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
 import PrivateRoute from "../routes/PrivateRoute";
@@ -39,14 +40,14 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
-      // {
-      //   path: "/all-donations",
-      //   element: (
-      //     <PrivateRoute>
-      //       <AllDonations />
-      //     </PrivateRoute>
-      //   ),
-      // },
+      {
+        path: "/all-donations",
+        element: (
+          <PrivateRoute>
+            <AllDonations />
+          </PrivateRoute>
+        ),
+      },
       // {
       //   path: "/donation/:id",
       //   element: (
