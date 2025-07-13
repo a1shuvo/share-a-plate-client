@@ -22,7 +22,7 @@ const ManageDonations = () => {
   // Mutation for status update
   const mutation = useMutation({
     mutationFn: async ({ id, status }) => {
-      const res = await axiosSecure.patch(`/donations/${id}`, { status });
+      const res = await axiosSecure.patch(`/donations/admin/status/${id}`, { status });
       return res.data;
     },
     onSuccess: (_, { status }) => {

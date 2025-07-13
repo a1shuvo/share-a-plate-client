@@ -18,6 +18,7 @@ import CharityTransactionHistory from "../pages/Dashboard/Charity/CharityTransac
 import MyRequests from "../pages/Dashboard/Charity/MyRequests";
 import AddDonation from "../pages/Dashboard/Restaurant/AddDonation";
 import MyDonations from "../pages/Dashboard/Restaurant/MyDonations";
+import RequestedDonations from "../pages/Dashboard/Restaurant/RequestedDonations";
 import RestaurantDashboard from "../pages/Dashboard/Restaurant/RestaurantDashboard";
 import RestaurantProfile from "../pages/Dashboard/Restaurant/RestaurantProfile";
 import UpdateDonation from "../pages/Dashboard/Restaurant/UpdateDonation";
@@ -269,14 +270,14 @@ const router = createBrowserRouter([
           </RoleRoute>
         ),
       },
-      // {
-      //   path: "restaurant/requests",
-      //   element: (
-      //     <RoleRoute allowedRoles={["restaurant"]}>
-      //       <RequestedDonations />
-      //     </RoleRoute>
-      //   ),
-      // },
+      {
+        path: "restaurant/requests",
+        element: (
+          <RoleRoute allowedRoles={["restaurant"]}>
+            <RequestedDonations />
+          </RoleRoute>
+        ),
+      },
     ],
   },
   {

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Swal from "sweetalert2";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 
 const UpdateDonation = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
@@ -90,7 +91,6 @@ const UpdateDonation = () => {
       };
 
       const res = await axiosSecure.patch(`/donations/${id}`, updateData);
-      console.log(res.data);
 
       if (res.data.modifiedCount >= 0) {
         Swal.fire({
@@ -100,6 +100,7 @@ const UpdateDonation = () => {
           timer: 2000,
           showConfirmButton: false,
         });
+        navigate("/dashboard/restaurant/my-donations");
       }
     } catch (err) {
       Swal.fire("Error", err.message || "Something went wrong", "error");
