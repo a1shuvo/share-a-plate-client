@@ -13,8 +13,7 @@ const ReviewModal = ({ donationId, user, onClose, refetch }) => {
     try {
       const res = await axiosSecure.post("/reviews", {
         donationId,
-        name: user.displayName,
-        email: user.email,
+        userImage: user.photoURL,
         description,
         rating,
       });

@@ -31,7 +31,14 @@ const DonationDetails = () => {
     },
   });
 
-  // ✅ Save to Favorites
+  const { data: reviews = [], refetch: refetchReviews } = useQuery({
+    queryKey: ["reviews", id],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/reviews/donation/${id}`);
+      return res.data;
+    },
+  });
+
   const handleFavorite = async () => {
     try {
       const res = await axiosSecure.post("/favorites", {
@@ -49,7 +56,6 @@ const DonationDetails = () => {
     }
   };
 
-  // ✅ Confirm Pickup
   const handlePickupConfirm = async () => {
     try {
       const res = await axiosSecure.patch(`/requests/confirm/${id}`);
@@ -63,51 +69,42 @@ const DonationDetails = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
-      {/* 💾 Donation Details Card */}
-      <div className="card lg:card-side bg-base-100 shadow-xlnj">
-        <figure className="w-full lg:w-1/2">
-          <img
-            src={donation.image}
-            alt={donation.title}
-            className="object-cover h-96 w-full rounded-l-lg"
-          />
-        </figure>
-        <div className="card-body w-full lg:w-1/2">
-          <h2 className="card-title text-3xl font-bold text-primary">
-            {donation.title}
-          </h2>
-          <div className="space-y-1 text-base">
-            <p>
-              <span className="font-semibold">Food Type:</span>{" "}
-              {donation.foodType}
-            </p>
-            <p>
-              <span className="font-semibold">Quantity:</span>{" "}
-              {donation.quantity}
-            </p>
-            <p>
-              <span className="font-semibold">Pickup Time:</span>{" "}
-              {donation.pickupTime}
-            </p>
-            <p>
-              <span className="font-semibold">Restaurant:</span>{" "}
-              {donation.restaurant?.name}
-            </p>
-            <p>
-              <span className="font-semibold">Location:</span>{" "}
-              {donation.location}
-            </p>
-            <p>
-              <span className="font-semibold">Status:</span>{" "}
-              <span className="badge badge-info text-white">
-                {donation.status === "Verified" ? "Available" : donation.status}
-              </span>
-            </p>
-          </div>
+    <div className="max-w-6xl mx-auto px-4 py-10">
+      {/* Donation Details */}
+      <div className="bg-base-100 rounded-lg shadow-lg overflow-hidden flex flex-col lg:flex-row">
+        <img
+          src={donation.image}
+          alt={donation.title}
+          className="w-full lg:w-1/2 h-96 object-cover"
+        />
+        <div className="p-6 flex-1 space-y-3">
+          <h2 className="text-3xl font-bold text-primary">{donation.title}</h2>
+          <p>
+            <span className="font-semibold">Food Type:</span>{" "}
+            {donation.foodType}
+          </p>
+          <p>
+            <span className="font-semibold">Quantity:</span> {donation.quantity}
+          </p>
+          <p>
+            <span className="font-semibold">Pickup Time:</span>{" "}
+            {donation.pickupTime}
+          </p>
+          <p>
+            <span className="font-semibold">Restaurant:</span>{" "}
+            {donation.restaurant?.name}
+          </p>
+          <p>
+            <span className="font-semibold">Location:</span> {donation.location}
+          </p>
+          <p>
+            <span className="font-semibold">Status:</span>{" "}
+            <span className="badge badge-info text-white">
+              {donation.status === "Verified" ? "Available" : donation.status}
+            </span>
+          </p>
 
-          {/* 🔘 Action Buttons */}
-          <div className="mt-6 flex flex-col gap-3">
+          <div className="flex flex-col gap-2 mt-4">
             <button
               onClick={handleFavorite}
               className="btn btn-outline btn-accent w-full"
@@ -143,26 +140,39 @@ const DonationDetails = () => {
         </div>
       </div>
 
-      {/* 📝 Reviews */}
+      {/* Reviews */}
       <div className="mt-12">
-        <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-          <FaStar className="text-yellow-400" /> Reviews
+        <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
+          <FaStar className="text-yellow-400" /> User Reviews
         </h3>
-        {donation.reviews?.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {donation.reviews.map((review, idx) => (
+
+        {reviews.length > 0 ? (
+          <div className="space-y-4">
+            {reviews.map((review, idx) => (
               <div
                 key={idx}
-                className="border p-4 rounded-lg bg-base-200 shadow"
+                className="bg-base-200 p-5 rounded-lg shadow flex flex-col sm:flex-row gap-4"
               >
-                <p className="font-semibold text-lg">{review.name}</p>
-                <p className="text-sm text-gray-600 mb-2">
-                  {review.description}
-                </p>
-                <div className="flex gap-1">
-                  {Array.from({ length: review.rating }).map((_, i) => (
-                    <FaStar key={i} className="text-yellow-400" />
-                  ))}
+                <img
+                  src={review.userImage || "/default-avatar.png"}
+                  alt={review.name}
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div className="flex-1">
+                  <div className="flex justify-between items-center mb-1">
+                    <p className="font-semibold">{review.name}</p>
+                    <span className="text-sm text-gray-500">
+                      {new Date(review.createdAt).toLocaleString()}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-2">
+                    {review.description}
+                  </p>
+                  <div className="flex gap-1">
+                    {Array.from({ length: review.rating }).map((_, i) => (
+                      <FaStar key={i} className="text-yellow-400 text-sm" />
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
@@ -172,7 +182,7 @@ const DonationDetails = () => {
         )}
       </div>
 
-      {/* 📦 Modals */}
+      {/* Modals */}
       {showRequestModal && (
         <RequestModal
           donation={donation}
@@ -186,7 +196,7 @@ const DonationDetails = () => {
           donationId={id}
           user={user}
           onClose={() => setShowReviewModal(false)}
-          refetch={refetch}
+          refetch={refetchReviews}
         />
       )}
     </div>
