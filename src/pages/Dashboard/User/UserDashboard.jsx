@@ -1,13 +1,8 @@
+import { useQuery } from "@tanstack/react-query";
+import { FaDollarSign, FaHandsHelping, FaHeart, FaStar } from "react-icons/fa";
+import DashboardCard from "../../../components/dashboard/DashboardCard";
 import { useAuth } from "../../../hooks/useAuth";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
-import DashboardCard from "../../../components/dashboard/DashboardCard";
-import {
-  FaHeart,
-  FaStar,
-  FaDollarSign,
-  FaHandsHelping,
-} from "react-icons/fa";
 
 const UserDashboard = () => {
   const { user } = useAuth();
@@ -17,7 +12,7 @@ const UserDashboard = () => {
   const { data: favorites = [] } = useQuery({
     queryKey: ["favoritesCount", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/favorites?email=${user?.email}`);
+      const res = await axiosSecure.get(`/favorites/mine`);
       return res.data;
     },
   });
@@ -26,7 +21,7 @@ const UserDashboard = () => {
   const { data: reviews = [] } = useQuery({
     queryKey: ["reviewsCount", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/reviews?email=${user?.email}`);
+      const res = await axiosSecure.get(`/reviews/mine/all`);
       return res.data;
     },
   });
@@ -52,7 +47,9 @@ const UserDashboard = () => {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-6">Welcome, {user?.displayName} 👋</h2>
+      <h2 className="text-2xl font-bold mb-6">
+        Welcome, {user?.displayName} 👋
+      </h2>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-8">
         <DashboardCard
@@ -89,9 +86,15 @@ const UserDashboard = () => {
 
       <div className="bg-white p-6 rounded shadow max-w-xl">
         <h3 className="text-lg font-semibold mb-2">Account Info</h3>
-        <p><strong>Name:</strong> {user?.displayName}</p>
-        <p><strong>Email:</strong> {user?.email}</p>
-        <p><strong>Role:</strong> User</p>
+        <p>
+          <strong>Name:</strong> {user?.displayName}
+        </p>
+        <p>
+          <strong>Email:</strong> {user?.email}
+        </p>
+        <p>
+          <strong>Role:</strong> User
+        </p>
       </div>
     </div>
   );

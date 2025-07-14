@@ -10,7 +10,7 @@ const Favorites = () => {
   const { data: favorites = [], refetch } = useQuery({
     queryKey: ["favorites", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/favorites?email=${user.email}`);
+      const res = await axiosSecure.get(`/favorites/mine`);
       return res.data;
     },
   });
@@ -34,7 +34,7 @@ const Favorites = () => {
           </p>
           <div className="mt-2 flex justify-between">
             <Link
-              to={`/donation/${item.donationId}`}
+              to={`/donation/${item._id}`}
               className="btn btn-sm btn-primary"
             >
               Details

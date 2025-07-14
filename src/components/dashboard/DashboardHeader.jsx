@@ -17,10 +17,7 @@ const DashboardHeader = ({ toggleSidebar }) => {
       <div className="flex items-center gap-2">
         <div className="avatar">
           <div className="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img
-              src={user?.photoURL || "https://i.ibb.co/7WVNz3F/user.png"}
-              alt="user"
-            />
+            <img src={user?.photoURL || "/default-avatar.png"} alt="user" />
           </div>
         </div>
       </div>

@@ -1,9 +1,11 @@
 import { Link, NavLink, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { useAuth } from "../../hooks/useAuth";
+import { useUserRole } from "../../hooks/useUserRole";
 
 const Navbar = () => {
   const { user, logout, loading } = useAuth();
+  const { role } = useUserRole();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -18,7 +20,7 @@ const Navbar = () => {
 
   // Get dashboard route by role
   const getDashboardPath = () => {
-    switch (user?.role) {
+    switch (role) {
       case "admin":
         return "/dashboard/admin";
       case "charity":
@@ -103,7 +105,7 @@ const Navbar = () => {
             <div className="avatar">
               <div className="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                 <img
-                  src={user.photoURL || "https://i.ibb.co/7WVNz3F/user.png"}
+                  src={user.photoURL || "/default-avatar.png"}
                   alt="user avatar"
                 />
               </div>

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   FaClipboardList,
   FaDollarSign,
@@ -15,28 +14,10 @@ import {
   FaUtensils,
 } from "react-icons/fa";
 import { NavLink } from "react-router";
-import { useAuth } from "../../hooks/useAuth";
-import { useAxiosSecure } from "../../hooks/useAxiosSecure";
+import { useUserRole } from "../../hooks/useUserRole";
 
 const DashboardSidebar = ({ isMobile, closeSidebar }) => {
-  const { user } = useAuth();
-  const axiosSecure = useAxiosSecure();
-  const [role, setRole] = useState("");
-
-  useEffect(() => {
-    const fetchUserRole = async () => {
-      if (user?.email) {
-        try {
-          const res = await axiosSecure.get(`/users/${user.email}`);
-          setRole(res.data.role || "user");
-        } catch (error) {
-          console.error("Failed to fetch user role:", error);
-        }
-      }
-    };
-
-    fetchUserRole();
-  }, [user, axiosSecure]);
+  const { role } = useUserRole();
 
   const navLinkClass = ({ isActive }) =>
     `flex items-center gap-2 px-4 py-2 rounded-md hover:bg-primary hover:text-white transition duration-200 ${

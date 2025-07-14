@@ -14,33 +14,27 @@ const CharityDashboard = () => {
   const axiosSecure = useAxiosSecure();
 
   const { data: myRequests = [] } = useQuery({
-    queryKey: ["charity-my-requests", user?.email],
+    queryKey: ["my-requests", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(
-        `/charity/my-requests?email=${user.email}`
-      );
+      const res = await axiosSecure.get(`/requests/mine`);
       return res.data;
     },
     enabled: !!user?.email,
   });
 
   const { data: myPickups = [] } = useQuery({
-    queryKey: ["charity-pickups", user?.email],
+    queryKey: ["my-pickups", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(
-        `/charity/my-pickups?email=${user.email}`
-      );
+      const res = await axiosSecure.get(`/requests/my-pickups`);
       return res.data;
     },
     enabled: !!user?.email,
   });
 
   const { data: receivedDonations = [] } = useQuery({
-    queryKey: ["charity-received-donations", user?.email],
+    queryKey: ["received-donations", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(
-        `/charity/received-donations?email=${user.email}`
-      );
+      const res = await axiosSecure.get(`/requests/received`);
       return res.data;
     },
     enabled: !!user?.email,

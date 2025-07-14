@@ -45,7 +45,7 @@ const AdminDashboard = () => {
   const { data: transactions = [] } = useQuery({
     queryKey: ["adminTransactions"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/transactions");
+      const res = await axiosSecure.get("/transactions/all");
       return res.data;
     },
   });
