@@ -1,21 +1,18 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Swal from "sweetalert2";
-import { useAuth } from "../../hooks/useAuth";
 import { useAxiosSecure } from "../../hooks/useAxiosSecure";
 
-const PaymentForm = ({ formData }) => {
-  const { user } = useAuth();
+const PaymentForm = ({ formData, user, refetch, onClose }) => {
   const axiosSecure = useAxiosSecure();
   const stripe = useStripe();
   const elements = useElements();
 
   const handlePayment = async (e) => {
     e.preventDefault();
-
     if (!stripe || !elements) return;
 
     try {
-      // Create payment intent
+      // Create PaymentIntent
       const res = await axiosSecure.post("/payments/create-payment-intent", {
         amount: 2500,
         email: user.email,
@@ -37,13 +34,9 @@ const PaymentForm = ({ formData }) => {
         }
       );
 
-      if (error) {
-        throw new Error(error.message);
-      }
-
-      if (paymentIntent.status !== "succeeded") {
+      if (error) throw new Error(error.message);
+      if (paymentIntent.status !== "succeeded")
         throw new Error("Payment did not succeed.");
-      }
 
       // Save role request
       await axiosSecure.post("/role-requests", {
@@ -64,6 +57,10 @@ const PaymentForm = ({ formData }) => {
         purpose: "Charity Role Request",
         status: "Pending",
       });
+
+      // ✅ Refetch to show new role status
+      if (refetch) refetch();
+      if (onClose) onClose(); // Close modal
 
       Swal.fire("Success", "Charity role requested successfully.", "success");
     } catch (err) {

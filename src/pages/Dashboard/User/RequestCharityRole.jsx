@@ -10,7 +10,7 @@ const RequestCharityRole = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState(null); // Holds form input to pass to CheckoutWrapper
+  const [formData, setFormData] = useState(null);
 
   const {
     register,
@@ -18,17 +18,27 @@ const RequestCharityRole = () => {
     formState: { errors },
   } = useForm();
 
-  // Fetch existing role request
-  const { data: existingRequest, isLoading } = useQuery({
+  const {
+    data: existingRequest = {},
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["roleRequest", user?.email],
-    queryFn: async () => {
-      const res = await axiosSecure.get(`/role-requests/user/${user.email}`);
-      return res.data;
-    },
     enabled: !!user?.email,
+    queryFn: async () => {
+      try {
+        const encodedEmail = encodeURIComponent(user.email);
+        const res = await axiosSecure.get(
+          `/role-requests/user/${encodedEmail}`
+        );
+        return res.data;
+      } catch (err) {
+        if (err.response?.status === 404) return null;
+        throw err;
+      }
+    },
   });
 
-  // Handle form submit → open modal
   const onSubmit = (data) => {
     if (
       existingRequest?.status === "Pending" ||
@@ -36,7 +46,7 @@ const RequestCharityRole = () => {
     ) {
       return Swal.fire({
         icon: "info",
-        title: "Request Exists",
+        title: "Request Already Exists",
         text: `You already have a ${existingRequest.status} request.`,
         timer: 2000,
         showConfirmButton: false,
@@ -48,85 +58,103 @@ const RequestCharityRole = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto bg-white p-6 rounded shadow">
-      <h2 className="text-xl font-bold mb-4">Request Charity Role</h2>
+    <div className="max-w-2xl mx-auto px-4 py-10 bg-base-100 rounded-lg shadow-md">
+      <h2 className="text-3xl font-bold text-center text-primary mb-6">
+        Request Charity Role
+      </h2>
 
       {isLoading ? (
-        <p className="text-center text-gray-500">
-          Checking existing request...
-        </p>
+        <div className="text-center">
+          <span className="loading loading-spinner text-primary"></span>
+          <p className="text-gray-500 mt-2">
+            Checking your role request status...
+          </p>
+        </div>
       ) : existingRequest?.status === "Pending" ||
         existingRequest?.status === "Approved" ? (
-        <p className="bg-gray-100 p-4 text-center rounded">
-          You already have a <strong>{existingRequest.status}</strong> role
-          request.
-        </p>
+        <div className="bg-info/10 border border-info text-info p-4 rounded text-center">
+          <p>
+            You already have a <strong>{existingRequest.status}</strong>{" "}
+            request.
+          </p>
+        </div>
       ) : (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {/* Name (readonly) */}
-          <input
-            className="input input-bordered w-full"
-            value={user?.displayName}
-            readOnly
-          />
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <div>
+            <label className="label font-medium">Full Name</label>
+            <input
+              value={user?.displayName}
+              readOnly
+              className="input input-bordered w-full"
+            />
+          </div>
 
-          {/* Email (readonly) */}
-          <input
-            className="input input-bordered w-full"
-            value={user?.email}
-            readOnly
-          />
+          <div>
+            <label className="label font-medium">Email</label>
+            <input
+              value={user?.email}
+              readOnly
+              className="input input-bordered w-full"
+            />
+          </div>
 
-          {/* Organization Name */}
-          <input
-            {...register("organizationName", {
-              required: "Organization name is required",
-            })}
-            placeholder="Organization Name"
-            className="input input-bordered w-full"
-          />
-          {errors.organizationName && (
-            <p className="text-red-500 text-sm">
-              {errors.organizationName.message}
-            </p>
-          )}
+          <div>
+            <label className="label font-medium">Organization Name</label>
+            <input
+              {...register("organizationName", {
+                required: "Organization name is required",
+              })}
+              placeholder="Enter organization name"
+              className="input input-bordered w-full"
+            />
+            {errors.organizationName && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.organizationName.message}
+              </p>
+            )}
+          </div>
 
-          {/* Mission Statement */}
-          <textarea
-            {...register("missionStatement", {
-              required: "Mission statement is required",
-            })}
-            placeholder="Mission Statement"
-            className="textarea textarea-bordered w-full"
-          ></textarea>
-          {errors.missionStatement && (
-            <p className="text-red-500 text-sm">
-              {errors.missionStatement.message}
-            </p>
-          )}
+          <div>
+            <label className="label font-medium">Mission Statement</label>
+            <textarea
+              {...register("missionStatement", {
+                required: "Mission statement is required",
+              })}
+              placeholder="Describe your organization's mission"
+              className="textarea textarea-bordered w-full min-h-[100px]"
+            ></textarea>
+            {errors.missionStatement && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.missionStatement.message}
+              </p>
+            )}
+          </div>
 
-          <button type="submit" className="btn btn-primary w-full">
-            Pay $25 & Request
+          <button type="submit" className="btn btn-primary w-full mt-4">
+            Pay $25 & Submit Request
           </button>
         </form>
       )}
 
-      {/* Stripe Payment Modal */}
+      {/* Payment Modal */}
       {showModal && formData && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
           <div className="relative bg-white p-6 rounded-lg w-full max-w-md shadow-xl">
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-2 right-2 text-gray-600 hover:text-red-600"
+              className="absolute top-2 right-2 text-gray-500 hover:text-red-600 text-xl"
+              aria-label="Close"
             >
-              ✕
+              &times;
             </button>
-            <h3 className="text-lg font-bold mb-4">Complete Your Payment</h3>
-            {/* CheckoutWrapper renders Stripe Elements & handles API calls */}
+            <h3 className="text-lg font-bold mb-4 text-center">
+              Complete Your Payment
+            </h3>
             <CheckoutWrapper
               formData={formData}
               onClose={() => setShowModal(false)}
               user={user}
+              refetch={refetch}
             />
           </div>
         </div>
