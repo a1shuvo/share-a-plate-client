@@ -13,8 +13,6 @@ const MyPickups = () => {
     queryKey: ["myPickups", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get("/requests/my-pickups");
-      console.log(res.data);
-
       return res.data;
     },
     enabled: !!user?.email,

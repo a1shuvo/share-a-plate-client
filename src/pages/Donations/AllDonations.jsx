@@ -6,9 +6,9 @@ const AllDonations = () => {
   const axiosSecure = useAxiosSecure();
 
   const { data: donations = [], isLoading } = useQuery({
-    queryKey: ["verified-donations"],
+    queryKey: ["active-donations"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/donations/verified");
+      const res = await axiosSecure.get("/donations/active");
       return res.data;
     },
   });
@@ -72,10 +72,16 @@ const AllDonations = () => {
                 <div className="flex items-center gap-2">
                   <span className="font-semibold">Status:</span>
                   <div
-                    className={`badge ${
+                    className={`badge text-white ${
                       donation.status === "Verified"
                         ? "badge-success"
-                        : "badge-ghost"
+                        : donation.status === "Requested"
+                        ? "badge-info"
+                        : donation.status === "Picked Up"
+                        ? "badge-neutral"
+                        : donation.status === "Rejected"
+                        ? "badge-error"
+                        : "badge-warning"
                     }`}
                   >
                     {donation.status === "Verified"

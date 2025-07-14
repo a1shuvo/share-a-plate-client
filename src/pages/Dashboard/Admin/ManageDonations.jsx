@@ -22,7 +22,9 @@ const ManageDonations = () => {
   // Mutation for status update
   const mutation = useMutation({
     mutationFn: async ({ id, status }) => {
-      const res = await axiosSecure.patch(`/donations/admin/status/${id}`, { status });
+      const res = await axiosSecure.patch(`/donations/admin/status/${id}`, {
+        status,
+      });
       return res.data;
     },
     onSuccess: (_, { status }) => {
@@ -79,9 +81,13 @@ const ManageDonations = () => {
                 <td>{donation.quantity}</td>
                 <td>
                   <span
-                    className={`badge ${
+                    className={`badge whitespace-nowrap text-white ${
                       donation.status === "Verified"
                         ? "badge-success"
+                        : donation.status === "Requested"
+                        ? "badge-info"
+                        : donation.status === "Picked Up"
+                        ? "badge-neutral"
                         : donation.status === "Rejected"
                         ? "badge-error"
                         : "badge-warning"
