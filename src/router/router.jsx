@@ -15,6 +15,7 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import CharityDashboard from "../pages/Dashboard/Charity/CharityDashboard";
 import CharityProfile from "../pages/Dashboard/Charity/CharityProfile";
 import CharityTransactionHistory from "../pages/Dashboard/Charity/CharityTransactionHistory";
+import MyPickups from "../pages/Dashboard/Charity/MyPickups";
 import MyRequests from "../pages/Dashboard/Charity/MyRequests";
 import AddDonation from "../pages/Dashboard/Restaurant/AddDonation";
 import MyDonations from "../pages/Dashboard/Restaurant/MyDonations";
@@ -204,14 +205,14 @@ const router = createBrowserRouter([
           </RoleRoute>
         ),
       },
-      // {
-      //   path: "charity/my-pickups",
-      //   element: (
-      //     <RoleRoute allowedRoles={["charity"]}>
-      //       <MyPickups />
-      //     </RoleRoute>
-      //   ),
-      // },
+      {
+        path: "charity/my-pickups",
+        element: (
+          <RoleRoute allowedRoles={["charity"]}>
+            <MyPickups />
+          </RoleRoute>
+        ),
+      },
       // {
       //   path: "charity/received-donations",
       //   element: (
