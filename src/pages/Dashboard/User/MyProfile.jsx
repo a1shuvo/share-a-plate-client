@@ -8,7 +8,10 @@ const MyProfile = () => {
   return (
     <div className="max-w-lg bg-white p-6 rounded shadow">
       <div className="flex items-center gap-4 mb-4">
-        <img src={user?.photoURL} className="w-16 h-16 rounded-full" />
+        <img
+          src={user?.photoURL || "/default-avatar.png"}
+          className="w-16 h-16 rounded-full"
+        />
         <div>
           <h2 className="text-xl font-semibold">{user?.displayName}</h2>
           <p className="text-sm text-gray-500">{user?.email}</p>

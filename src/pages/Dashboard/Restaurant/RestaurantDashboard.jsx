@@ -17,7 +17,7 @@ const RestaurantDashboard = () => {
   const { data: donations = [] } = useQuery({
     queryKey: ["restaurantDonations", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/donations?email=${user?.email}`);
+      const res = await axiosSecure.get(`/donations/mine/all`);
       return res.data;
     },
     enabled: !!user?.email,

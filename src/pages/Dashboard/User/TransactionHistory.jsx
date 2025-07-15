@@ -34,7 +34,19 @@ const TransactionHistory = () => {
               <td>${(txn.amount / 100).toFixed(2)}</td>
               <td>{new Date(txn.date).toLocaleDateString()}</td>
               <td>{txn.purpose}</td>
-              <td>{txn.status}</td>
+              <td>
+                <span
+                  className={`badge ${
+                    txn.status === "Approved"
+                      ? "badge-success"
+                      : txn.status === "Rejected"
+                      ? "badge-error"
+                      : "badge-warning"
+                  }`}
+                >
+                  {txn.status}
+                </span>
+              </td>
             </tr>
           ))}
         </tbody>

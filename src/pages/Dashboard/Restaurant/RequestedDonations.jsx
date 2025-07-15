@@ -81,7 +81,7 @@ const RequestedDonations = () => {
                 <td>{req.pickupTime}</td>
                 <td>
                   <span
-                    className={`badge text-white ${
+                    className={`badge whitespace-nowrap text-white ${
                       req.status === "Pending"
                         ? "badge-warning"
                         : req.status === "Accepted"

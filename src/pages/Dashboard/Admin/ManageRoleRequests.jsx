@@ -124,7 +124,7 @@ const ManageRoleRequests = () => {
                       {req.status}
                     </span>
                   </td>
-                  <td className="flex gap-2">
+                  <td className="flex flex-wrap gap-2">
                     {req.status === "Pending" && (
                       <>
                         <button
