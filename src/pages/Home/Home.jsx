@@ -1,5 +1,6 @@
 import FeaturedDonations from "../../components/Home/FeaturedDonations";
 import HomeBanner from "../../components/Home/HomeBanner";
+import ImpactStats from "../../components/Home/ImpactStats";
 import LatestDonationRequests from "../../components/Home/LatestDonationRequests";
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
       <HomeBanner></HomeBanner>
       <FeaturedDonations></FeaturedDonations>
       <LatestDonationRequests></LatestDonationRequests>
+      <ImpactStats></ImpactStats>
     </div>
   );
 };
