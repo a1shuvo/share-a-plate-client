@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import Loader from "../../../components/shared/Loader";
 import { useAuth } from "../../../hooks/useAuth";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 
@@ -22,7 +23,7 @@ const CharityTransactionHistory = () => {
       </h2>
 
       {isLoading ? (
-        <div className="text-center py-10">Loading...</div>
+        <Loader></Loader>
       ) : transactions.length === 0 ? (
         <div className="text-center py-10 text-gray-500">
           No transactions found.

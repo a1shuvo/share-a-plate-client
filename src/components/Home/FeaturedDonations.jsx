@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import { useAxiosSecure } from "../../hooks/useAxiosSecure";
+import Loader from "../shared/Loader";
 
 const FeaturedDonations = () => {
   const axiosSecure = useAxiosSecure();
@@ -13,13 +14,7 @@ const FeaturedDonations = () => {
     },
   });
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center py-20">
-        <span className="loading loading-spinner text-primary"></span>
-      </div>
-    );
-  }
+  if (isLoading) return <Loader></Loader>;
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-16">

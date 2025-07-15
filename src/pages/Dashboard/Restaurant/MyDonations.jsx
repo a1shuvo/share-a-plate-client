@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
+import Loader from "../../../components/shared/Loader";
 import { useAuth } from "../../../hooks/useAuth";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 
@@ -53,7 +54,7 @@ const MyDonations = () => {
       <h2 className="text-2xl font-bold mb-6">My Donations</h2>
 
       {isLoading ? (
-        <p>Loading...</p>
+        <Loader></Loader>
       ) : donations.length === 0 ? (
         <p>No donations found.</p>
       ) : (

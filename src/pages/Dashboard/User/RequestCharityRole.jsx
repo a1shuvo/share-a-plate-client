@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import CheckoutWrapper from "../../../components/payment/CheckoutWrapper";
+import Loader from "../../../components/shared/Loader";
 import { useAuth } from "../../../hooks/useAuth";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 
@@ -65,7 +66,7 @@ const RequestCharityRole = () => {
 
       {isLoading ? (
         <div className="text-center">
-          <span className="loading loading-spinner text-primary"></span>
+          <Loader></Loader>
           <p className="text-gray-500 mt-2">
             Checking your role request status...
           </p>

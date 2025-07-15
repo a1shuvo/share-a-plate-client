@@ -6,6 +6,7 @@ import {
   FaUtensils,
 } from "react-icons/fa";
 import Swal from "sweetalert2";
+import Loader from "../../../components/shared/Loader";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 
 const ManageUsers = () => {
@@ -73,7 +74,7 @@ const ManageUsers = () => {
     });
   };
 
-  if (isLoading) return <p>Loading users...</p>;
+  if (isLoading) return <Loader></Loader>;
 
   return (
     <div className="overflow-x-auto mt-4">

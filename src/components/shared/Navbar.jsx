@@ -2,6 +2,7 @@ import { Link, NavLink, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { useAuth } from "../../hooks/useAuth";
 import { useUserRole } from "../../hooks/useUserRole";
+import Loader from "./Loader";
 
 const Navbar = () => {
   const { user, logout, loading } = useAuth();
@@ -99,7 +100,7 @@ const Navbar = () => {
       {/* Right side */}
       <div className="navbar-end">
         {loading ? (
-          <span className="loading loading-spinner text-primary"></span>
+          <Loader></Loader>
         ) : user ? (
           <div className="flex items-center gap-3">
             <div className="avatar">

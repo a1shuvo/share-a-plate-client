@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import Swal from "sweetalert2";
+import Loader from "../../../components/shared/Loader";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 
 const RequestedDonations = () => {
@@ -44,7 +45,7 @@ const RequestedDonations = () => {
   });
 
   if (isLoading) {
-    return <div className="text-center my-10">Loading...</div>;
+    return <Loader></Loader>;
   }
 
   return (

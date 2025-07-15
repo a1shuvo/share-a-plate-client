@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import Loader from "../../../components/shared/Loader";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 
 const ManageRoleRequests = () => {
@@ -83,7 +84,7 @@ const ManageRoleRequests = () => {
       <h2 className="text-2xl font-bold mb-6">Manage Role Requests</h2>
 
       {isLoading ? (
-        <div className="text-center">Loading...</div>
+        <Loader></Loader>
       ) : roleRequests.length === 0 ? (
         <p>No role requests found.</p>
       ) : (

@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from "react-router";
 import Swal from "sweetalert2";
+import Loader from "../components/shared/Loader";
 import { useAuth } from "../hooks/useAuth";
 import { useUserRole } from "../hooks/useUserRole";
 
@@ -9,11 +10,7 @@ const RoleRoute = ({ allowedRoles, children }) => {
   const location = useLocation();
 
   if (authLoading || roleLoading) {
-    return (
-      <div className="h-[70vh] flex justify-center items-center">
-        <span className="loading loading-spinner text-primary w-12 h-12"></span>
-      </div>
-    );
+    return <Loader></Loader>;
   }
 
   if (!user || !allowedRoles.includes(role)) {

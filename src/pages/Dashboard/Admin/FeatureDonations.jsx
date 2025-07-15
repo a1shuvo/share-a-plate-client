@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import Loader from "../../../components/shared/Loader";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 
 const FeatureDonations = () => {
@@ -34,7 +35,7 @@ const FeatureDonations = () => {
       </h2>
 
       {isLoading ? (
-        <div className="text-center">Loading...</div>
+        <Loader></Loader>
       ) : donations.length === 0 ? (
         <div className="text-center text-gray-500">
           No verified donations found.
