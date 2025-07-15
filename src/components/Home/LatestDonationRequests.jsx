@@ -28,13 +28,12 @@ const LatestDonationRequests = () => {
   }, []);
 
   return (
-    <section className="py-16 px-4 md:px-10 bg-gradient-to-b from-base-100 to-base-200">
+    <section className="py-16 px-4 bg-gradient-to-l from-white to-[#f0fdfa]">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-6 text-primary">
+        <h2 className="text-4xl font-extrabold text-primary flex items-center justify-center gap-2 mb-10">
           <FaHandsHelping className="inline mr-2 text-secondary" />
           Latest Charity Requests
         </h2>
-
         {loading ? (
           <Loader></Loader>
         ) : error ? (
@@ -44,7 +43,7 @@ const LatestDonationRequests = () => {
             {requests.map((req) => (
               <div
                 key={req._id}
-                className="bg-white shadow-sm hover:shadow-lg transition duration-300 rounded-lg overflow-hidden group"
+                className="bg-white shadow-md hover:shadow-xl transition duration-300 rounded-lg overflow-hidden group"
               >
                 <div className="p-5">
                   <div className="flex items-center gap-3 mb-4">

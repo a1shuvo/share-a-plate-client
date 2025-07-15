@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { FaStar } from "react-icons/fa";
 import { Link } from "react-router";
 import { useAxiosSecure } from "../../hooks/useAxiosSecure";
 import Loader from "../shared/Loader";
@@ -17,9 +18,9 @@ const FeaturedDonations = () => {
   if (isLoading) return <Loader></Loader>;
 
   return (
-    <section className="max-w-6xl mx-auto py-16">
-      <h2 className="text-3xl font-bold text-center mb-10 text-primary">
-        🍽️ Featured Donations
+    <section className="py-16 px-4 bg-gradient-to-br from-[#f0fdfa] to-[#ffffff]">
+      <h2 className="text-4xl font-extrabold text-primary flex items-center justify-center gap-2 mb-10">
+        <FaStar className="inline mr-2 text-secondary" /> Featured Donations
       </h2>
 
       {donations.length === 0 ? (

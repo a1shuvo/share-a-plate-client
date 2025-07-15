@@ -32,9 +32,9 @@ const ImpactStats = () => {
   return (
     <section
       ref={ref}
-      className="py-16 px-6 bg-gradient-to-r from-white to-[#f0fdfa]"
+      className="py-16 px-4 bg-gradient-to-r from-white to-[#f0fdfa]"
     >
-      <h2 className="text-3xl font-bold text-center mb-6 text-primary">
+      <h2 className="text-4xl font-extrabold text-primary flex items-center justify-center gap-2 mb-10">
         <FaChartBar className="inline mr-2 text-secondary" /> Our Impact
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">

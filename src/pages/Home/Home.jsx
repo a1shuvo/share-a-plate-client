@@ -1,3 +1,4 @@
+import CommunityStories from "../../components/Home/CommunityStories";
 import FeaturedDonations from "../../components/Home/FeaturedDonations";
 import HomeBanner from "../../components/Home/HomeBanner";
 import ImpactStats from "../../components/Home/ImpactStats";
@@ -10,6 +11,7 @@ const Home = () => {
       <FeaturedDonations></FeaturedDonations>
       <LatestDonationRequests></LatestDonationRequests>
       <ImpactStats></ImpactStats>
+      <CommunityStories></CommunityStories>
     </div>
   );
 };
