@@ -1,11 +1,9 @@
 import { Link, NavLink, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { useAuth } from "../../hooks/useAuth";
-import { useUserRole } from "../../hooks/useUserRole";
 
 const Navbar = () => {
-  const { user, logout, loading } = useAuth();
-  const { role } = useUserRole();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -15,22 +13,6 @@ const Navbar = () => {
       navigate("/login");
     } catch (error) {
       Swal.fire("Logout Failed", error.message, "error");
-    }
-  };
-
-  // Get dashboard route by role
-  const getDashboardPath = () => {
-    switch (role) {
-      case "admin":
-        return "/dashboard/admin";
-      case "charity":
-        return "/dashboard/charity";
-      case "restaurant":
-        return "/dashboard/restaurant";
-      case "user":
-        return "/dashboard/user";
-      default:
-        return "/dashboard";
     }
   };
 
@@ -49,7 +31,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to={getDashboardPath()} className="text-base font-medium">
+            <NavLink to={"/dashboard"} className="text-base font-medium">
               Dashboard
             </NavLink>
           </li>
@@ -98,9 +80,7 @@ const Navbar = () => {
 
       {/* Right side */}
       <div className="navbar-end">
-        {loading ? (
-          <span className="loading loading-spinner text-primary"></span>
-        ) : user ? (
+        {user ? (
           <div className="flex items-center gap-3">
             <div className="avatar">
               <div className="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

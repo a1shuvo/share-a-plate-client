@@ -14,6 +14,7 @@ const RequestModal = ({ donation, user, onClose, refetch }) => {
     try {
       const res = await axiosSecure.post("/requests", {
         donationId: donation._id,
+        donationTitle: donation.title,
         pickupTime,
         description,
       });
