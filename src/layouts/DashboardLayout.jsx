@@ -1,51 +1,48 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
 import DashboardHeader from "../components/dashboard/DashboardHeader";
 import DashboardSidebar from "../components/dashboard/DashboardSidebar";
 import { useUserRole } from "../hooks/useUserRole";
 
 const DashboardLayout = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
   const { role, loading } = useUserRole();
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Utility: Get dashboard path based on role
+  // Redirect base /dashboard to role-specific subpath
   useEffect(() => {
     if (!loading && location.pathname === "/dashboard" && role) {
-      const path = (() => {
-        switch (role) {
-          case "admin":
-            return "/dashboard/admin";
-          case "charity":
-            return "/dashboard/charity";
-          case "restaurant":
-            return "/dashboard/restaurant";
-          case "user":
-            return "/dashboard/user";
-          default:
-            return "/dashboard";
-        }
-      })();
+      const path =
+        {
+          admin: "/dashboard/admin",
+          charity: "/dashboard/charity",
+          restaurant: "/dashboard/restaurant",
+          user: "/dashboard/user",
+        }[role] || "/dashboard";
 
       navigate(path, { replace: true });
     }
   }, [loading, role, location.pathname, navigate]);
 
   return (
-    <div className="flex min-h-screen">
-      {/* Sidebar */}
-      <DashboardSidebar
-        isMobile={showSidebar}
-        closeSidebar={() => setShowSidebar(false)}
-      />
+    <div className="drawer lg:drawer-open">
+      {/* Mobile toggle checkbox */}
+      <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col">
-        <DashboardHeader toggleSidebar={() => setShowSidebar(!showSidebar)} />
+      <div className="drawer-content flex flex-col bg-base-200 min-h-screen">
+        <DashboardHeader />
         <main className="p-4">
           <Outlet />
         </main>
+      </div>
+
+      {/* Sidebar */}
+      <div className="drawer-side z-40">
+        <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
+        <div className="w-64 h-full">
+          <DashboardSidebar />
+        </div>
       </div>
     </div>
   );

@@ -105,12 +105,14 @@ const DonationDetails = () => {
           </p>
 
           <div className="flex flex-col gap-2 mt-4">
-            <button
-              onClick={handleFavorite}
-              className="btn btn-outline btn-accent w-full"
-            >
-              <FaHeart className="mr-2" /> Save to Favorites
-            </button>
+            {(role === "charity" || role === "user") && (
+              <button
+                onClick={handleFavorite}
+                className="btn btn-outline btn-accent w-full"
+              >
+                <FaHeart className="mr-2" /> Save to Favorites
+              </button>
+            )}
 
             {role === "charity" && donation.status === "Verified" && (
               <button

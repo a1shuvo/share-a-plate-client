@@ -5,7 +5,9 @@ const AdminProfile = () => {
 
   return (
     <div className="max-w-3xl mx-auto bg-white p-6 rounded shadow mt-4">
-      <h2 className="text-2xl font-bold mb-6 text-center">Admin Profile</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center text-primary">
+        Admin Profile
+      </h2>
 
       <div className="flex flex-col sm:flex-row items-center gap-6">
         {/* Profile Image */}
