@@ -6,7 +6,7 @@ const MyProfile = () => {
   const { role } = useUserRole();
 
   return (
-    <div className="max-w-lg bg-white p-6 rounded shadow">
+    <div className="max-w-lg bg-white p-6 rounded shadow mx-auto">
       <div className="flex items-center gap-4 mb-4">
         <img
           src={user?.photoURL || "/default-avatar.png"}

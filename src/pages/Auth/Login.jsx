@@ -13,12 +13,14 @@ const Login = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (data) => {
     try {
       await loginUser(data.email, data.password);
+
       await axiosSecure.put("/users/upsert", {
         email: data.email,
       });
@@ -32,11 +34,40 @@ const Login = () => {
 
       navigate("/");
     } catch (err) {
+      let message = "Login Failed";
+
+      // Fallback parsing for Firebase 10+ auth errors
+      if (err.code === "auth/invalid-credential") {
+        message = "Email or password doesn't match.";
+        setError("email", {
+          type: "manual",
+          message: "Email may be incorrect or not registered.",
+        });
+        setError("password", {
+          type: "manual",
+          message: "Password may be incorrect.",
+        });
+      } else if (err.code === "auth/user-not-found") {
+        message = "Email doesn't match any account.";
+        setError("email", {
+          type: "manual",
+          message: message,
+        });
+      } else if (err.code === "auth/wrong-password") {
+        message = "Password doesn't match.";
+        setError("password", {
+          type: "manual",
+          message: message,
+        });
+      } else {
+        message = err.message;
+      }
+
       Swal.fire({
         icon: "error",
         title: "Login Failed",
-        text: err.message,
-        timer: 1500,
+        text: message,
+        timer: 2000,
         showConfirmButton: false,
       });
     }
@@ -116,7 +147,7 @@ const Login = () => {
         </button>
 
         <p className="text-sm text-center mt-4">
-          Don’t have an account?{" "}
+          Don't have an account?{" "}
           <Link to="/register" className="text-primary font-semibold">
             Register
           </Link>

@@ -64,7 +64,7 @@ const MyDonations = () => {
           {donations.map((donation) => (
             <div
               key={donation._id}
-              className="card shadow-md bg-white rounded-md overflow-hidden border"
+              className="card shadow-md bg-white rounded-md overflow-hidden"
             >
               <figure>
                 <img

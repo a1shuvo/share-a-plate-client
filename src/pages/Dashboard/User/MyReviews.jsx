@@ -51,7 +51,7 @@ const MyReviews = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold text-primary mb-6">My Reviews</h2>
+      <h2 className="text-3xl font-bold text-primary mb-6 text-center">My Reviews</h2>
 
       {isLoading ? (
         <Loader></Loader>

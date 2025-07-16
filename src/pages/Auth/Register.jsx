@@ -116,6 +116,14 @@ const Register = () => {
             {...register("password", {
               required: "Password is required",
               minLength: { value: 6, message: "Minimum 6 characters" },
+              validate: {
+                hasUpperCase: (value) =>
+                  /[A-Z]/.test(value) ||
+                  "Password must contain at least one uppercase letter",
+                hasSpecialChar: (value) =>
+                  /[!@#$%^&*(),.?":{}|<>]/.test(value) ||
+                  "Password must contain at least one special character",
+              },
             })}
             className="input input-bordered w-full"
           />

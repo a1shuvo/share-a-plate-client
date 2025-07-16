@@ -69,7 +69,7 @@ const MyRequests = () => {
           {requests.map((req) => (
             <div
               key={req._id}
-              className="card bg-base-100 border shadow hover:shadow-lg transition-all"
+              className="card bg-base-100 shadow-md hover:shadow-lg transition-all"
             >
               <div className="card-body">
                 <h3 className="card-title text-primary">{req.donationTitle}</h3>
