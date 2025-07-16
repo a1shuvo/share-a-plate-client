@@ -22,6 +22,7 @@ import AddDonation from "../pages/Dashboard/Restaurant/AddDonation";
 import MyDonations from "../pages/Dashboard/Restaurant/MyDonations";
 import RequestedDonations from "../pages/Dashboard/Restaurant/RequestedDonations";
 import RestaurantDashboard from "../pages/Dashboard/Restaurant/RestaurantDashboard";
+import RestaurantDonationStats from "../pages/Dashboard/Restaurant/RestaurantDonationStats";
 import RestaurantProfile from "../pages/Dashboard/Restaurant/RestaurantProfile";
 import UpdateDonation from "../pages/Dashboard/Restaurant/UpdateDonation";
 import Favorites from "../pages/Dashboard/User/Favorites";
@@ -277,6 +278,14 @@ const router = createBrowserRouter([
         element: (
           <RoleRoute allowedRoles={["restaurant"]}>
             <RequestedDonations />
+          </RoleRoute>
+        ),
+      },
+      {
+        path: "restaurant/statistics",
+        element: (
+          <RoleRoute allowedRoles={["restaurant"]}>
+            <RestaurantDonationStats />
           </RoleRoute>
         ),
       },

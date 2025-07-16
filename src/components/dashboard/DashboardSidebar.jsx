@@ -1,4 +1,5 @@
 import {
+  FaChartBar,
   FaClipboardList,
   FaDollarSign,
   FaEnvelopeOpenText,
@@ -122,6 +123,13 @@ const DashboardSidebar = ({ isMobile, closeSidebar }) => {
               onClick={closeSidebar}
             >
               <FaClipboardList className="text-lg" /> Requested Donations
+            </NavLink>
+            <NavLink
+              to="/dashboard/restaurant/statistics"
+              className={navLinkClass}
+              onClick={closeSidebar}
+            >
+              <FaChartBar className="text-lg" /> Donations Statistics
             </NavLink>
           </>
         )}

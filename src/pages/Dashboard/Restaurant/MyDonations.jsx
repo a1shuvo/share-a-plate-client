@@ -50,8 +50,10 @@ const MyDonations = () => {
   };
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-6">My Donations</h2>
+    <div className="max-w-5xl mx-auto px-4 py-10">
+      <h2 className="text-2xl font-bold text-primary flex justify-center items-center gap-2 mb-4">
+        My Donations
+      </h2>
 
       {isLoading ? (
         <Loader></Loader>

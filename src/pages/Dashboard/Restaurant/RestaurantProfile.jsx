@@ -23,9 +23,9 @@ const RestaurantProfile = () => {
 
       <div className="flex items-center justify-center mb-6">
         <img
-          src={restaurant?.image || user?.photoURL}
+          src={restaurant?.image || user?.photoURL || "/default-avatar.png"}
           alt="Restaurant Logo"
-          className="w-24 h-24 rounded-full border shadow"
+          className="w-24 h-24 rounded-full shadow ring ring-primary ring-offset-base-100 ring-offset-2"
         />
       </div>
 
