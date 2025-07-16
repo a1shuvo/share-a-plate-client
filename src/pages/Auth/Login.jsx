@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { useAuth } from "../../hooks/useAuth";
 import { useAxiosSecure } from "../../hooks/useAxiosSecure";
@@ -8,7 +8,9 @@ import { useAxiosSecure } from "../../hooks/useAxiosSecure";
 const Login = () => {
   const { loginUser, loginWithGoogle } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const location = useLocation();
   const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -32,7 +34,7 @@ const Login = () => {
         timer: 1500,
       });
 
-      navigate("/");
+      navigate(from, { replace: true });
     } catch (err) {
       let message = "Login Failed";
 
@@ -92,7 +94,7 @@ const Login = () => {
         timer: 1500,
       });
 
-      navigate("/");
+      navigate(from, { replace: true });
     } catch (err) {
       Swal.fire({
         icon: "error",
