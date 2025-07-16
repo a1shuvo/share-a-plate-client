@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import Loader from "../../../components/shared/Loader";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 
 const ManageDonations = () => {
@@ -9,7 +10,7 @@ const ManageDonations = () => {
   // Fetch all donations
   const {
     data: donations = [],
-    isPending,
+    isLoading,
     isError,
   } = useQuery({
     queryKey: ["donations"],
@@ -46,8 +47,7 @@ const ManageDonations = () => {
     mutation.mutate({ id, status });
   };
 
-  if (isPending)
-    return <p className="text-center py-10">Loading donations...</p>;
+  if (isLoading) return <Loader></Loader>;
   if (isError)
     return <p className="text-center text-red-500">Failed to load donations</p>;
 

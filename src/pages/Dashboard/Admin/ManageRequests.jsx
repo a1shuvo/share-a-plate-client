@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import Loader from "../../../components/shared/Loader";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 
 const ManageRequests = () => {
@@ -54,7 +55,7 @@ const ManageRequests = () => {
       </h2>
 
       {isLoading ? (
-        <div className="text-center text-gray-500">Loading requests...</div>
+        <Loader></Loader>
       ) : requests.length === 0 ? (
         <div className="text-center text-gray-500">No requests found.</div>
       ) : (

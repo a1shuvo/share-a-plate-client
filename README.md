@@ -1,12 +1,38 @@
-# React + Vite
+# 🍽 ShareAPlate - Food Waste Reduction Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**ShareAPlate** is a MERN Stack-powered food donation and sharing platform that connects **restaurants**, **charities**, and **individuals** to reduce food waste and support communities in need.
 
-Currently, two official plugins are available:
+🌐 **Live Site:** [Share A Plate](https://share-a-plate-a1shuvo.web.app)  
+🛠 **Admin Panel:** [Admin Dashboard](https://share-a-plate-a1shuvo.web.app/dashboard/admin)  
+👤 **Admin Login:**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Email:** admin@demo.com
+- **Password:** 1234@A
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Features
+
+- 🔐 **Role-Based Authentication** with Firebase (Admin, Restaurant, Charity, User)
+- 🍱 **Restaurant Dashboard** to add, manage, and track food donations
+- 🎯 **Charity Dashboard** to request donations, confirm pickups, and review food
+- ❤️ **User Dashboard** with favorites, review history, and charity role upgrade
+- 📈 **Donation Statistics Chart** with Recharts showing quantities by food type
+- ⭐ **Featured Donations** marked by admins for special highlighting
+- 🧾 **Donation Request Flow** with request acceptance, rejection, and tracking
+- 💳 **Stripe Integration** for upgrading to Charity role (with payment history)
+- ✨ **Modern UI with DaisyUI & Tailwind CSS**, fully responsive
+- 📂 **Protected Routes by Role** with route guards (Admin, Charity, etc.)
+- ❌ **Custom 404 Not Found Page** for invalid routes
+
+---
+
+## 🛠 Technologies Used
+
+- **Frontend:** React, Vite, React Router DOM, DaisyUI, Tailwind CSS, React Icons
+- **Backend:** Express.js, MongoDB, Firebase Admin SDK, Stripe API
+- **Authentication:** Firebase Auth (Email/Password + Google)
+- **Authorization:** JWT, Custom Role Middleware
+- **Charting:** Recharts
+- **State Management:** React Hook Form, React Query
+- **Deployment:** Firebase Hosting & Render.com (for backend)

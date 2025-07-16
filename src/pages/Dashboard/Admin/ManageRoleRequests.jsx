@@ -111,7 +111,16 @@ const ManageRoleRequests = () => {
                   <td>{req.name}</td>
                   <td>{req.email}</td>
                   <td>{req.organizationName}</td>
-                  <td>{req.missionStatement}</td>
+                  <td>
+                    <div
+                      className="tooltip tooltip-top"
+                      data-tip={req.missionStatement}
+                    >
+                      <span className="line-clamp-1 w-[100px] truncate">
+                        {req.missionStatement || "N/A"}
+                      </span>
+                    </div>
+                  </td>
                   <td>{req.transactionId}</td>
                   <td>
                     <span
