@@ -5,6 +5,7 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import { Link } from "react-router";
+import Logo from "./Logo";
 
 const Footer = () => {
   return (
@@ -13,8 +14,8 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8 text-center md:text-left">
           {/* Brand and Description */}
           <div className="space-y-2 max-w-sm">
-            <h2 className="text-2xl font-bold text-primary">ShareAPlate</h2>
-            <p className="text-sm text-gray-500">
+            <Logo></Logo>
+            <p className="text-sm text-gray-500 pt-3">
               Connecting surplus food from restaurants to communities in need.
               Together, we reduce waste and fight hunger.
             </p>

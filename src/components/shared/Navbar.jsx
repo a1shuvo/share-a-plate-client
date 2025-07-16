@@ -1,6 +1,7 @@
 import { Link, NavLink, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { useAuth } from "../../hooks/useAuth";
+import Logo from "./Logo";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -68,9 +69,7 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <Link to="/" className="text-xl font-bold text-primary">
-          ShareAPlate
-        </Link>
+        <Logo></Logo>
       </div>
 
       {/* Center menu - Desktop only */}

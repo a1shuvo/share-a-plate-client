@@ -17,6 +17,7 @@ import {
 } from "react-icons/fa";
 import { NavLink } from "react-router";
 import { useUserRole } from "../../hooks/useUserRole";
+import Logo from "../shared/Logo";
 
 const DashboardSidebar = () => {
   const { role } = useUserRole();
@@ -41,7 +42,7 @@ const DashboardSidebar = () => {
       </div>
 
       <h2 className="text-xl font-bold text-primary px-2 mb-4 mt-2">
-        ShareAPlate
+        <Logo></Logo>
       </h2>
 
       <NavLink to="/" className={navLinkClass}>
