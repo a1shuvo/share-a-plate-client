@@ -31,7 +31,16 @@ const MyRequests = () => {
         old?.filter((req) => req._id !== id)
       );
 
-      Swal.fire("Success", "Your request was cancelled", "success");
+      Swal.fire({
+        title: "Success",
+        text: "Your request was cancelled",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-end",
+      });
     },
     onError: (err) => {
       Swal.fire("Error", err.message || "Failed to cancel", "error");

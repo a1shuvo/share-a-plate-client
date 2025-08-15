@@ -20,7 +20,17 @@ const RequestModal = ({ donation, user, onClose, refetch }) => {
       });
 
       if (res.data.insertedId) {
-        Swal.fire("Success", "Request submitted successfully!", "success");
+        Swal.fire({
+          title: "Success",
+          text: "Request submitted successfully!",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-end",
+        });
+
         onClose();
         refetch();
       }

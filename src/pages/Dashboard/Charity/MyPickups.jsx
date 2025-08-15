@@ -25,7 +25,17 @@ const MyPickups = () => {
       return res.data;
     },
     onSuccess: () => {
-      Swal.fire("Success", "Marked as Picked Up", "success");
+      Swal.fire({
+        title: "Success",
+        text: "Marked as Picked Up",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-end",
+      });
+
       refetch();
     },
     onError: (err) => {

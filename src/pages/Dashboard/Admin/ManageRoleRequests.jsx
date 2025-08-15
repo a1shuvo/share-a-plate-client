@@ -28,7 +28,16 @@ const ManageRoleRequests = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["roleRequests"]);
-      Swal.fire("Success", "Role request approved", "success");
+      Swal.fire({
+        title: "Success",
+        text: "Role request approved",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-end",
+      });
     },
     onError: () => {
       Swal.fire("Error", "Something went wrong", "error");

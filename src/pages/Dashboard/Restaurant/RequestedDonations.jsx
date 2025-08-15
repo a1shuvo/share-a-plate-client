@@ -23,7 +23,16 @@ const RequestedDonations = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["restaurantRequests"]);
-      Swal.fire("Accepted", "Request accepted successfully.", "success");
+      Swal.fire({
+        title: "Accepted",
+        text: "Request accepted successfully.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-end",
+      });
     },
     onError: (err) => {
       Swal.fire("Error", err.message || "Failed to accept request", "error");

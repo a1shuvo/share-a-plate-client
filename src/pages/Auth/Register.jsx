@@ -36,6 +36,9 @@ const Register = () => {
         title: "Account Created",
         showConfirmButton: false,
         timer: 1500,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-end",
       });
 
       reset();
@@ -68,6 +71,9 @@ const Register = () => {
         title: "Registered with Google",
         showConfirmButton: false,
         timer: 1500,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-end",
       });
 
       navigate("/");

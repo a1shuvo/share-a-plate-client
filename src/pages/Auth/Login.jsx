@@ -32,6 +32,9 @@ const Login = () => {
         title: "Login Successful",
         showConfirmButton: false,
         timer: 1500,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-end",
       });
 
       navigate(from, { replace: true });
@@ -92,6 +95,9 @@ const Login = () => {
         title: "Google Login Successful",
         showConfirmButton: false,
         timer: 1500,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-end",
       });
 
       navigate(from, { replace: true });

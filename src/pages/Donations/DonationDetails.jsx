@@ -45,7 +45,16 @@ const DonationDetails = () => {
         donationId: id,
       });
       if (res.data.insertedId) {
-        Swal.fire("Saved!", "Donation added to favorites.", "success");
+        Swal.fire({
+          title: "Saved!",
+          text: "Donation added to favorites.",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-end",
+        });
       }
     } catch (err) {
       Swal.fire(
@@ -60,7 +69,17 @@ const DonationDetails = () => {
     try {
       const res = await axiosSecure.patch(`/requests/confirm/${id}`);
       if (res.data.modifiedCount > 0) {
-        Swal.fire("Success", "Marked as Picked Up", "success");
+        Swal.fire({
+          title: "Success",
+          text: "Marked as Picked Up",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-end",
+        });
+
         refetch();
       }
     } catch (err) {

@@ -30,7 +30,16 @@ const ManageUsers = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["allUsers"]);
-      Swal.fire("Success", "User role updated", "success");
+      Swal.fire({
+        title: "Success",
+        text: "User role updated",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-end",
+      });
     },
   });
 
@@ -42,7 +51,16 @@ const ManageUsers = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["allUsers"]);
-      Swal.fire("Deleted", "User has been removed", "success");
+      Swal.fire({
+        title: "Deleted",
+        text: "User has been removed",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-end",
+      });
     },
   });
 

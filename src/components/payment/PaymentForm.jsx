@@ -62,7 +62,16 @@ const PaymentForm = ({ formData, user, refetch, onClose }) => {
       if (refetch) refetch();
       if (onClose) onClose(); // Close modal
 
-      Swal.fire("Success", "Charity role requested successfully.", "success");
+      Swal.fire({
+        title: "Success",
+        text: "Charity role requested successfully.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-end",
+      });
     } catch (err) {
       Swal.fire("Payment Failed", err.message, "error");
     }

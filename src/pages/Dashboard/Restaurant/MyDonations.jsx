@@ -28,7 +28,16 @@ const MyDonations = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["myDonations"]);
-      Swal.fire("Deleted!", "Donation has been removed.", "success");
+      Swal.fire({
+        title: "Deleted!",
+        text: "Donation has been removed.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-end",
+      });
     },
     onError: () => {
       Swal.fire("Error", "Could not delete donation.", "error");

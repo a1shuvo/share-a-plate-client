@@ -25,7 +25,16 @@ const ManageRequests = () => {
       queryClient.setQueryData(["adminRequests"], (old) =>
         old.filter((r) => r._id !== id)
       );
-      Swal.fire("Deleted!", "Request has been removed.", "success");
+      Swal.fire({
+        title: "Deleted!",
+        text: "Request has been removed.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-end",
+      });
     },
     onError: () => {
       Swal.fire("Error", "Failed to delete the request", "error");

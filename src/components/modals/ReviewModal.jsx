@@ -19,7 +19,17 @@ const ReviewModal = ({ donationId, user, onClose, refetch }) => {
       });
 
       if (res.data.insertedId) {
-        Swal.fire("Success", "Review submitted", "success");
+        Swal.fire({
+          title: "Success",
+          text: "Review submitted",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-end",
+        });
+
         onClose();
         refetch();
       }
