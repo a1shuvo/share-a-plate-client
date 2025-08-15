@@ -4,7 +4,7 @@ const CharityProfile = () => {
   const { user } = useAuth();
 
   return (
-    <div className="max-w-3xl mx-auto bg-white p-6 rounded shadow">
+    <div className="max-w-3xl mx-auto bg-base-100 p-6 rounded shadow">
       <h2 className="text-2xl font-bold mb-4 text-primary">Charity Profile</h2>
 
       <div className="flex flex-col md:flex-row items-center gap-6">

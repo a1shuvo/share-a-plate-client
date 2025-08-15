@@ -17,7 +17,7 @@ const CharityTransactionHistory = () => {
   });
 
   return (
-    <div className="overflow-x-auto bg-white p-6 rounded shadow">
+    <div className="overflow-x-auto bg-base-100 p-6 rounded shadow">
       <h2 className="text-2xl font-bold mb-4 text-primary text-center">
         Transaction History
       </h2>

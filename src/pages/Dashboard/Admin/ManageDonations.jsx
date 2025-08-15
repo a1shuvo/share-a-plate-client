@@ -55,7 +55,7 @@ const ManageDonations = () => {
     <div className="p-6">
       <h2 className="text-2xl font-bold mb-4 text-primary">Manage Donations</h2>
 
-      <div className="overflow-x-auto bg-white shadow rounded">
+      <div className="overflow-x-auto bg-base-100 shadow rounded">
         <table className="table table-zebra w-full">
           <thead className="bg-base-200">
             <tr>

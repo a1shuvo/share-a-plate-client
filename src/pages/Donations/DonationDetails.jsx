@@ -108,7 +108,7 @@ const DonationDetails = () => {
             {(role === "charity" || role === "user") && (
               <button
                 onClick={handleFavorite}
-                className="btn btn-outline btn-accent w-full"
+                className="btn btn-outline w-full btn-primary"
               >
                 <FaHeart className="mr-2" /> Save to Favorites
               </button>

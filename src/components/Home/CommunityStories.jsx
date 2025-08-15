@@ -29,13 +29,13 @@ const stories = [
 
 const CommunityStories = () => {
   return (
-    <section className="py-16 px-4 bg-gradient-to-br from-[#f0fdfa] to-[#ffffff]">
+    <section className="py-16 px-4 bg-base-100">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-extrabold text-primary flex items-center justify-center gap-2">
           <FaUsers className="inline mr-2 text-secondary" />
           Community Stories
         </h2>
-        <p className="text-gray-600 max-w-xl mx-auto mt-2">
+        <p className="text-gray-400 max-w-xl mx-auto mt-2">
           Real stories from real people making real impact.
         </p>
       </div>
@@ -44,7 +44,7 @@ const CommunityStories = () => {
         {stories.map((story) => (
           <div
             key={story.id}
-            className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between"
+            className="bg-base-100 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between border border-base-200"
           >
             <div className="flex items-center gap-4 mb-4">
               <img
@@ -58,7 +58,7 @@ const CommunityStories = () => {
               </div>
             </div>
 
-            <div className="text-gray-700 text-sm italic relative mt-2 flex-grow">
+            <div className="text-sm italic relative mt-2 flex-grow">
               <FaQuoteLeft className="absolute text-gray-300 -top-4 -left-3 text-2xl" />
               <p className="leading-relaxed px-2">{story.quote}</p>
               <FaQuoteRight className="absolute text-gray-300 -bottom-4 -right-3 text-2xl" />

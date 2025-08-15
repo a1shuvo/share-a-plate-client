@@ -18,7 +18,7 @@ const FeaturedDonations = () => {
   if (isLoading) return <Loader></Loader>;
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-br from-[#f0fdfa] to-[#ffffff]">
+    <section className="py-16 px-4 bg-base-100">
       <h2 className="text-4xl font-extrabold text-primary flex items-center justify-center gap-2 mb-10">
         <FaStar className="inline mr-2 text-secondary" /> Featured Donations
       </h2>

@@ -80,7 +80,7 @@ const ManageUsers = () => {
     <div className="overflow-x-auto mt-4">
       <h2 className="text-2xl font-bold mb-4 text-primary">Manage Users</h2>
 
-      <table className="table w-full bg-white rounded shadow">
+      <table className="table w-full bg-base-100 rounded shadow">
         <thead className="bg-gray-100">
           <tr>
             <th>#</th>

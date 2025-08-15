@@ -46,7 +46,7 @@ const RestaurantDonationStats = () => {
       ) : stats.length === 0 ? (
         <div className="text-center text-gray-500">No donation data found.</div>
       ) : (
-        <div className="w-full bg-white rounded-xl shadow-lg p-4 overflow-x-auto">
+        <div className="w-full bg-base-100 rounded-xl shadow-lg p-4 overflow-x-auto">
           <ResponsiveContainer width="100%" height={400}>
             <BarChart data={stats}>
               <CartesianGrid strokeDasharray="3 3" />

@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { BsClock } from "react-icons/bs";
 import { FaHandsHelping } from "react-icons/fa";
-import { MdOutlineDescription } from "react-icons/md";
 import Loader from "../shared/Loader";
 
 const LatestDonationRequests = () => {
@@ -28,7 +27,7 @@ const LatestDonationRequests = () => {
   }, []);
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-l from-white to-[#f0fdfa]">
+    <section className="py-16 px-4 bg-base-100">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-extrabold text-primary flex items-center justify-center gap-2 mb-10">
           <FaHandsHelping className="inline mr-2 text-secondary" />
@@ -43,9 +42,9 @@ const LatestDonationRequests = () => {
             {requests.map((req) => (
               <div
                 key={req._id}
-                className="bg-white shadow-md hover:shadow-xl transition duration-300 rounded-lg overflow-hidden group"
+                className="card bg-base-100 shadow-md hover:shadow-xl transition duration-300 rounded-lg overflow-hidden group border border-base-200"
               >
-                <div className="p-5">
+                <div className="card-body p-5">
                   <div className="flex items-center gap-3 mb-4">
                     <img
                       src={req.charityImage || "/default-avatar.png"}
@@ -53,7 +52,7 @@ const LatestDonationRequests = () => {
                       className="w-12 h-12 rounded-full object-cover"
                     />
                     <div>
-                      <h3 className="text-md font-semibold text-gray-800">
+                      <h3 className="text-md font-semibold">
                         {req.charityName}
                       </h3>
                       <p className="text-xs text-gray-400 flex items-center gap-1">
@@ -71,8 +70,7 @@ const LatestDonationRequests = () => {
                     {req.donationTitle}
                   </h4>
 
-                  <p className="text-sm text-gray-600 flex gap-2">
-                    <MdOutlineDescription className="text-lg text-accent" />
+                  <p className="text-sm font-light flex gap-2">
                     <span className="line-clamp-3">
                       {req.requestDescription}
                     </span>

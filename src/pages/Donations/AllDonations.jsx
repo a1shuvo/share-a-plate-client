@@ -91,19 +91,19 @@ const AllDonations = () => {
                   {donation.title}
                 </h3>
 
-                <p className="text-sm text-gray-600">
+                <p className="text-sm">
                   <span className="font-semibold">Restaurant:</span>{" "}
                   {donation.restaurant?.name}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm">
                   <span className="font-semibold">Location:</span>{" "}
                   {donation.location}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm">
                   <span className="font-semibold">Quantity:</span>{" "}
                   {donation.quantity}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm">
                   <span className="font-semibold">Pickup Time:</span>{" "}
                   {donation.pickupTime}
                 </p>

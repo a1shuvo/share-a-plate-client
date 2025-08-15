@@ -113,7 +113,7 @@ const UpdateDonation = () => {
   if (loading) return <Loader></Loader>;
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded shadow">
+    <div className="max-w-3xl mx-auto p-6 bg-base-100 rounded shadow">
       <h2 className="text-2xl font-bold mb-6 text-center text-primary">
         Update Donation
       </h2>

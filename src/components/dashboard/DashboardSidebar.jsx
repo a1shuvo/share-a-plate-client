@@ -26,7 +26,7 @@ const DashboardSidebar = () => {
     `flex items-center gap-3 px-4 py-2 rounded-lg transition duration-200 ${
       isActive
         ? "bg-primary text-white"
-        : "hover:bg-primary/10 text-gray-700 hover:text-primary"
+        : "hover:bg-primary/10 hover:text-primary"
     }`;
 
   return (

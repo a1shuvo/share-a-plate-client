@@ -32,19 +32,19 @@ const ImpactStats = () => {
   return (
     <section
       ref={ref}
-      className="py-16 px-4 bg-gradient-to-r from-white to-[#f0fdfa]"
+      className="py-16 px-4 bg-base-100"
     >
       <h2 className="text-4xl font-extrabold text-primary flex items-center justify-center gap-2 mb-10">
         <FaChartBar className="inline mr-2 text-secondary" /> Our Impact
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto border border-base-200">
         {stats.map((stat) => (
           <div
             key={stat.id}
-            className="bg-white p-8 rounded-2xl shadow-md text-center hover:shadow-lg transition-all duration-300"
+            className="bg-base-100 p-8 rounded-2xl shadow-md text-center hover:shadow-lg transition-all duration-300"
           >
             <div className="flex justify-center mb-4">{stat.icon}</div>
-            <div className="text-4xl font-bold text-gray-900">
+            <div className="text-4xl font-bold">
               {inView ? (
                 <CountUp
                   end={stat.end}
@@ -56,7 +56,7 @@ const ImpactStats = () => {
                 "0"
               )}
             </div>
-            <p className="mt-2 text-gray-600 text-lg">{stat.label}</p>
+            <p className="mt-2 text-gray-500 text-lg">{stat.label}</p>
           </div>
         ))}
       </div>

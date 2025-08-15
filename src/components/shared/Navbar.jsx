@@ -2,6 +2,7 @@ import { Link, NavLink, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { useAuth } from "../../hooks/useAuth";
 import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -79,6 +80,9 @@ const Navbar = () => {
 
       {/* Right side */}
       <div className="navbar-end">
+        <div>
+          <ThemeToggle />
+        </div>
         {user ? (
           <div className="flex items-center gap-3">
             <div className="avatar">
@@ -91,7 +95,7 @@ const Navbar = () => {
             </div>
             <button
               onClick={handleLogout}
-              className="btn btn-sm btn-outline btn-error"
+              className="btn btn-sm btn-outline btn-error hover:text-white"
             >
               Logout
             </button>

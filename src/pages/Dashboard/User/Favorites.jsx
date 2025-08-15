@@ -40,7 +40,7 @@ const Favorites = () => {
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {favorites.map((item) => (
-            <div key={item._id} className="card bg-white p-4 shadow rounded">
+            <div key={item._id} className="card bg-base-100 p-4 shadow rounded">
               <img
                 src={item.image}
                 className="w-full h-40 object-cover rounded"

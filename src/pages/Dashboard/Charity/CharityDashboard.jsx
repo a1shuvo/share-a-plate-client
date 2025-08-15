@@ -82,7 +82,7 @@ const CharityDashboard = () => {
         />
       </div>
 
-      <div className="bg-white p-6 rounded shadow max-w-xl">
+      <div className="bg-base-100 p-6 rounded shadow max-w-xl">
         <h3 className="text-lg font-semibold mb-2">Charity Profile</h3>
         <p>
           <strong>Name:</strong> {user?.displayName}
