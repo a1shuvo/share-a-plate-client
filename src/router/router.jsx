@@ -37,6 +37,7 @@ import AllDonations from "../pages/Donations/AllDonations";
 import DonationDetails from "../pages/Donations/DonationDetails";
 import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
+import Privacy from "../pages/Privacy";
 import PrivateRoute from "../routes/PrivateRoute";
 import RoleRoute from "../routes/RoleRoute";
 
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
+      { path: "/privacy", element: <Privacy /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       {
