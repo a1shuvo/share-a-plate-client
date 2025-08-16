@@ -21,7 +21,7 @@ const FeaturedDonations = () => {
     <section className="py-16 px-4 md:px-8 lg:px-12 bg-base-100">
       <h2 className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 text-center">
         <FaStar className="text-4xl sm:text-3xl text-secondary" />
-        <span className="text-3xl sm:text-4xl font-extrabold text-primary dark:text-white">
+        <span className="text-3xl sm:text-4xl font-extrabold text-primary">
           Featured Donations
         </span>
       </h2>

@@ -14,13 +14,13 @@ const benefits = [
       "Make a positive environmental impact by ensuring leftover food reaches the right hands.",
   },
   {
-    icon: <FaUsers className="text-4xl text-accent" />,
+    icon: <FaUsers className="text-4xl text-primary" />,
     title: "Join a Caring Network",
     description:
       "Be part of a community of restaurants, charities, and users working together for good.",
   },
   {
-    icon: <FaClock className="text-4xl text-primary" />,
+    icon: <FaClock className="text-4xl text-secondary" />,
     title: "Quick & Easy",
     description:
       "Donate or request food effortlessly with our user-friendly platform.",
@@ -29,10 +29,10 @@ const benefits = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-20 px-4 md:px-8 lg:px-12 bg-base-100 dark:bg-gray-900">
+    <section className="py-20 px-4 md:px-8 lg:px-12 bg-base-100">
       <div className="max-w-6xl mx-auto text-center mb-12">
         <h2 className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 text-center">
-          <span className="text-3xl sm:text-4xl font-extrabold text-primary dark:text-white">
+          <span className="text-3xl sm:text-4xl font-extrabold text-primary">
             Why Choose <span className="text-secondary">ShareAPlate?</span>
           </span>
         </h2>
@@ -47,7 +47,7 @@ const WhyChooseUs = () => {
         {benefits.map((benefit, index) => (
           <div
             key={index}
-            className="bg-base-200 dark:bg-gray-800 p-8 rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 flex flex-col items-center text-center"
+            className="bg-base-200 p-8 rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 flex flex-col items-center text-center"
           >
             <div className="mb-4">{benefit.icon}</div>
             <h3 className="text-2xl font-semibold mb-2">{benefit.title}</h3>

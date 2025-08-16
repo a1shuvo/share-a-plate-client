@@ -31,7 +31,7 @@ const LatestDonationRequests = () => {
       <div className="max-w-6xl mx-auto">
         <h2 className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 text-center">
           <FaHandsHelping className="text-4xl sm:text-3xl text-secondary" />
-          <span className="text-3xl sm:text-4xl font-extrabold text-primary dark:text-white">
+          <span className="text-3xl sm:text-4xl font-extrabold text-primary">
             Latest Charity Requests
           </span>
         </h2>

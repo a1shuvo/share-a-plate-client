@@ -99,7 +99,7 @@ const ManageUsers = () => {
       <h2 className="text-2xl font-bold mb-4 text-primary">Manage Users</h2>
 
       <table className="table w-full bg-base-100 rounded shadow">
-        <thead className="bg-gray-100">
+        <thead className="bg-base-200">
           <tr>
             <th>#</th>
             <th>User Name</th>

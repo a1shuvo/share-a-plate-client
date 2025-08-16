@@ -39,6 +39,11 @@ const Navbar = () => {
           About
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/dashboard/upgrade-role" className="text-base font-medium">
+          Become a Charity
+        </NavLink>
+      </li>
       {user && (
         <>
           <li>
