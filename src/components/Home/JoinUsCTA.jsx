@@ -1,4 +1,3 @@
-// src/components/Home/JoinUsCTA.jsx
 import { FaHandsHelping, FaHeart, FaUserPlus } from "react-icons/fa";
 import { Link } from "react-router";
 

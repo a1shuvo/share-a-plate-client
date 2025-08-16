@@ -15,16 +15,19 @@ const FeaturedDonations = () => {
     },
   });
 
-  if (isLoading) return <Loader></Loader>;
+  if (isLoading) return <Loader />;
 
   return (
-    <section className="py-16 px-4 bg-base-100">
-      <h2 className="text-4xl font-extrabold text-primary flex items-center justify-center gap-2 mb-10">
-        <FaStar className="inline mr-2 text-secondary" /> Featured Donations
+    <section className="py-16 px-4 md:px-8 lg:px-12 bg-base-100">
+      <h2 className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 text-center">
+        <FaStar className="text-4xl sm:text-3xl text-secondary" />
+        <span className="text-3xl sm:text-4xl font-extrabold text-primary dark:text-white">
+          Featured Donations
+        </span>
       </h2>
 
       {donations.length === 0 ? (
-        <p className="text-center text-gray-500 italic">
+        <p className="text-center text-gray-500 italic text-lg">
           No featured donations available right now.
         </p>
       ) : (
@@ -32,55 +35,56 @@ const FeaturedDonations = () => {
           {donations.map((donation) => (
             <div
               key={donation._id}
-              className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all border border-base-200"
+              className="card bg-base-200 shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1 border border-base-200 rounded-xl overflow-hidden"
             >
-              <figure>
+              <figure className="h-52 overflow-hidden">
                 <img
                   src={donation.image}
                   alt={donation.title}
-                  className="w-full h-52 object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
               </figure>
-              <div className="card-body">
-                <h3 className="card-title text-lg font-semibold text-primary">
-                  {donation.title}
-                </h3>
-                <p>
-                  <span className="font-semibold">Food Type:</span>{" "}
-                  {donation.foodType}
-                </p>
-                <p>
-                  <span className="font-semibold">Restaurant:</span>{" "}
-                  {donation.restaurant?.name}
-                </p>
-                <p>
-                  <span className="font-semibold">Location:</span>{" "}
-                  {donation.location}
-                </p>
+              <div className="card-body flex flex-col justify-between">
                 <div>
-                  <span
-                    className={`badge text-white ${
-                      donation.status === "Verified"
-                        ? "badge-success"
-                        : donation.status === "Requested"
-                        ? "badge-info"
-                        : donation.status === "Picked Up"
-                        ? "badge-neutral"
-                        : donation.status === "Rejected"
-                        ? "badge-error"
-                        : "badge-warning"
-                    }`}
-                  >
-                    {donation.status === "Verified"
-                      ? "Available"
-                      : donation.status}
-                  </span>
+                  <h3 className="card-title text-lg md:text-xl font-semibold text-primary">
+                    {donation.title}
+                  </h3>
+                  <p className="text-sm md:text-base mt-1">
+                    <span className="font-semibold">Food Type:</span>{" "}
+                    {donation.foodType}
+                  </p>
+                  <p className="text-sm md:text-base mt-1">
+                    <span className="font-semibold">Restaurant:</span>{" "}
+                    {donation.restaurant?.name}
+                  </p>
+                  <p className="text-sm md:text-base mt-1">
+                    <span className="font-semibold">Location:</span>{" "}
+                    {donation.location}
+                  </p>
+                  <div className="mt-2">
+                    <span
+                      className={`badge text-white ${
+                        donation.status === "Verified"
+                          ? "badge-success"
+                          : donation.status === "Requested"
+                          ? "badge-info"
+                          : donation.status === "Picked Up"
+                          ? "badge-neutral"
+                          : donation.status === "Rejected"
+                          ? "badge-error"
+                          : "badge-warning"
+                      }`}
+                    >
+                      {donation.status === "Verified"
+                        ? "Available"
+                        : donation.status}
+                    </span>
+                  </div>
                 </div>
-
                 <div className="card-actions mt-4">
                   <Link
                     to={`/donation/${donation._id}`}
-                    className="btn btn-outline btn-sm btn-primary w-full"
+                    className="btn btn-outline btn-primary btn-sm w-full hover:scale-105 transition-transform"
                   >
                     View Details
                   </Link>

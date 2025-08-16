@@ -40,11 +40,11 @@ const CommunityStories = () => {
         </p>
       </div>
 
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
         {stories.map((story) => (
           <div
             key={story.id}
-            className="bg-base-100 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between border border-base-200"
+            className="bg-base-200 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between border border-base-200"
           >
             <div className="flex items-center gap-4 mb-4">
               <img

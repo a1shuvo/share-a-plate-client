@@ -48,7 +48,7 @@ const HowItWorks = () => {
           {steps.map((step, i) => (
             <div
               key={i}
-              className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 border-t-4 border-primary/40"
+              className="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 border-t-4 border-primary/40"
             >
               <div className="card-body items-center text-center">
                 <div className="mb-4 p-4 bg-base-200 rounded-full">

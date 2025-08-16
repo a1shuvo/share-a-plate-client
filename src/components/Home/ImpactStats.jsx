@@ -38,7 +38,7 @@ const ImpactStats = () => {
         {stats.map((stat) => (
           <div
             key={stat.id}
-            className="bg-base-100 p-8 rounded-2xl shadow-md text-center hover:shadow-lg transition-all duration-300 border border-base-200"
+            className="bg-base-200 p-8 rounded-2xl shadow-md text-center hover:shadow-lg transition-all duration-300 border border-base-200"
           >
             <div className="flex justify-center mb-4">{stat.icon}</div>
             <div className="text-4xl font-bold">
