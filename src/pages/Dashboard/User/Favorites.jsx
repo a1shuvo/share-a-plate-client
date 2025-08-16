@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+import { FaEye, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 import Loader from "../../../components/shared/Loader";
 import { useAuth } from "../../../hooks/useAuth";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
@@ -21,8 +23,38 @@ const Favorites = () => {
   });
 
   const handleRemove = async (id) => {
-    await axiosSecure.delete(`/favorites/${id}`);
-    refetch();
+    // Show confirmation alert
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You are about to remove this item from favorites!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, remove it!",
+      cancelButtonText: "Cancel",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await axiosSecure.delete(`/favorites/${id}`);
+        refetch(); // refresh data
+
+        Swal.fire({
+          title: "Removed!",
+          text: "The item has been removed from your favorites.",
+          icon: "success",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          text: error.message || "Failed to remove the item.",
+          icon: "error",
+        });
+      }
+    }
   };
 
   return (
@@ -57,13 +89,13 @@ const Favorites = () => {
                   to={`/donation/${item._id}`}
                   className="btn btn-sm btn-primary"
                 >
-                  Details
+                  <FaEye /> Details
                 </Link>
                 <button
                   onClick={() => handleRemove(item._id)}
-                  className="btn btn-sm btn-error"
+                  className="btn btn-sm btn-primary"
                 >
-                  Remove
+                  <FaTrashAlt className="mr-1" /> Delete
                 </button>
               </div>
             </div>
