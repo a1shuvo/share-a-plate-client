@@ -1,4 +1,3 @@
-// src/components/Home/HowItWorks.jsx
 import {
   FaChartLine,
   FaCogs,
@@ -36,7 +35,9 @@ const HowItWorks = () => {
       <div className="max-w-6xl mx-auto text-center">
         {/* Heading */}
         <h2 className="text-4xl font-extrabold text-primary flex items-center justify-center gap-2 mb-10">
-          <FaCogs className="inline mr-2 text-secondary" />How It Works</h2>
+          <FaCogs className="inline mr-2 text-secondary" />
+          How It Works
+        </h2>
         <p className="mt-3 text-base md:text-lg opacity-80 max-w-2xl mx-auto">
           A simple process designed to reduce food waste and connect surplus
           food with people who need it the most.
