@@ -6,6 +6,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import About from "../pages/About";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
+import Contact from "../pages/Contact";
 import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard";
 import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
 import FeatureDonations from "../pages/Dashboard/Admin/FeatureDonations";
@@ -48,6 +49,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/about", element: <About /> },
+      { path: "/contact", element: <Contact /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       {
