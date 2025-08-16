@@ -34,10 +34,13 @@ const HowItWorks = () => {
     <section className="px-4 md:px-8 lg:px-12 py-16 bg-gradient-to-br from-base-200 via-base-100 to-base-200">
       <div className="max-w-6xl mx-auto text-center">
         {/* Heading */}
-        <h2 className="text-4xl font-extrabold text-primary flex items-center justify-center gap-2 mb-10">
-          <FaCogs className="inline mr-2 text-secondary" />
-          How It Works
+        <h2 className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 text-center">
+          <FaCogs className="text-4xl sm:text-3xl text-secondary" />
+          <span className="text-3xl sm:text-4xl font-extrabold text-primary dark:text-white">
+            How It Works
+          </span>
         </h2>
+
         <p className="mt-3 text-base md:text-lg opacity-80 max-w-2xl mx-auto">
           A simple process designed to reduce food waste and connect surplus
           food with people who need it the most.

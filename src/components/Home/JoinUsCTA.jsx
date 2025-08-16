@@ -10,9 +10,11 @@ const JoinUsCTA = () => {
 
       <div className="relative max-w-4xl mx-auto text-center z-10">
         {/* Heading with icon animation */}
-        <h2 className="text-4xl font-extrabold text-primary flex items-center justify-center gap-3 mb-6">
-          <FaHeart className="text-secondary animate-pulse" />
-          Join Us
+        <h2 className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6 text-center">
+          <FaHeart className="text-4xl sm:text-3xl text-secondary animate-pulse" />
+          <span className="text-3xl sm:text-4xl font-extrabold text-primary dark:text-white">
+            Join Us
+          </span>
         </h2>
 
         {/* Subtitle */}

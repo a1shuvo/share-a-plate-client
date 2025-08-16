@@ -31,9 +31,13 @@ const ImpactStats = () => {
 
   return (
     <section ref={ref} className="py-16 px-4 bg-base-100">
-      <h2 className="text-4xl font-extrabold text-primary flex items-center justify-center gap-2 mb-10">
-        <FaChartBar className="inline mr-2 text-secondary" /> Our Impact
+      <h2 className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 text-center">
+        <FaChartBar className="text-4xl sm:text-3xl text-secondary" />
+        <span className="text-3xl sm:text-4xl font-extrabold text-primary dark:text-white">
+          Our Impact
+        </span>
       </h2>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
         {stats.map((stat) => (
           <div

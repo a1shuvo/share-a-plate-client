@@ -34,6 +34,11 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/about" className="text-base font-medium">
+          About
+        </NavLink>
+      </li>
       {user && (
         <>
           <li>

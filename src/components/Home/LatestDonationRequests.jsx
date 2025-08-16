@@ -29,10 +29,13 @@ const LatestDonationRequests = () => {
   return (
     <section className="py-16 px-4 bg-base-100">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-extrabold text-primary flex items-center justify-center gap-2 mb-10">
-          <FaHandsHelping className="inline mr-2 text-secondary" />
-          Latest Charity Requests
+        <h2 className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 text-center">
+          <FaHandsHelping className="text-4xl sm:text-3xl text-secondary" />
+          <span className="text-3xl sm:text-4xl font-extrabold text-primary dark:text-white">
+            Latest Charity Requests
+          </span>
         </h2>
+
         {loading ? (
           <Loader></Loader>
         ) : error ? (

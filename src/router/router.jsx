@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout";
 
 // Public Pages
 import DashboardLayout from "../layouts/DashboardLayout";
+import About from "../pages/About";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard";
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { path: "/", element: <Home /> },
-      // { path: "/about", element: <About /> },
+      { path: "/about", element: <About /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       {

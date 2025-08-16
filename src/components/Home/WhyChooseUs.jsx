@@ -1,37 +1,45 @@
-import { FaHandsHelping, FaLeaf, FaUsers, FaClock } from "react-icons/fa";
+import { FaClock, FaHandsHelping, FaLeaf, FaUsers } from "react-icons/fa";
 
 const benefits = [
   {
     icon: <FaHandsHelping className="text-4xl text-primary" />,
     title: "Support Communities",
-    description: "Connect with charities and individuals to reduce food waste and help those in need."
+    description:
+      "Connect with charities and individuals to reduce food waste and help those in need.",
   },
   {
     icon: <FaLeaf className="text-4xl text-secondary" />,
     title: "Reduce Food Waste",
-    description: "Make a positive environmental impact by ensuring leftover food reaches the right hands."
+    description:
+      "Make a positive environmental impact by ensuring leftover food reaches the right hands.",
   },
   {
     icon: <FaUsers className="text-4xl text-accent" />,
     title: "Join a Caring Network",
-    description: "Be part of a community of restaurants, charities, and users working together for good."
+    description:
+      "Be part of a community of restaurants, charities, and users working together for good.",
   },
   {
     icon: <FaClock className="text-4xl text-primary" />,
     title: "Quick & Easy",
-    description: "Donate or request food effortlessly with our user-friendly platform."
-  }
+    description:
+      "Donate or request food effortlessly with our user-friendly platform.",
+  },
 ];
 
 const WhyChooseUs = () => {
   return (
     <section className="py-20 px-4 md:px-8 lg:px-12 bg-base-100 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto text-center mb-12">
-        <h2 className="text-4xl font-extrabold text-primary mb-4">
-          Why Choose <span className="text-secondary">ShareAPlate?</span>
+        <h2 className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 text-center">
+          <span className="text-3xl sm:text-4xl font-extrabold text-primary dark:text-white">
+            Why Choose <span className="text-secondary">ShareAPlate?</span>
+          </span>
         </h2>
+
         <p className="text-lg md:text-xl opacity-80 max-w-2xl mx-auto">
-          We connect restaurants, charities, and users to fight food waste and create a positive impact on communities and the environment.
+          We connect restaurants, charities, and users to fight food waste and
+          create a positive impact on communities and the environment.
         </p>
       </div>
 

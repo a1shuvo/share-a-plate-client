@@ -31,10 +31,13 @@ const CommunityStories = () => {
   return (
     <section className="py-16 px-4 bg-base-100">
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-extrabold text-primary flex items-center justify-center gap-2">
-          <FaUsers className="inline mr-2 text-secondary" />
-          Community Stories
+        <h2 className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 text-center">
+          <FaUsers className="text-4xl sm:text-3xl text-secondary" />
+          <span className="text-3xl sm:text-4xl font-extrabold text-primary dark:text-white">
+            Community Stories
+          </span>
         </h2>
+
         <p className="text-gray-400 max-w-xl mx-auto mt-2">
           Real stories from real people making real impact.
         </p>
