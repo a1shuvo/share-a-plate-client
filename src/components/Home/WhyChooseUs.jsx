@@ -29,7 +29,7 @@ const benefits = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-20 px-4 md:px-8 lg:px-12 bg-base-100">
+    <section className="px-4 md:px-8 lg:px-12 py-16 bg-gradient-to-br from-base-200 via-base-100 to-base-200">
       <div className="max-w-6xl mx-auto text-center mb-12">
         <h2 className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 text-center">
           <span className="text-3xl sm:text-4xl font-extrabold text-primary">
@@ -37,7 +37,7 @@ const WhyChooseUs = () => {
           </span>
         </h2>
 
-        <p className="text-lg md:text-xl opacity-80 max-w-2xl mx-auto">
+        <p className="text-base md:text-lg opacity-80 max-w-2xl mx-auto">
           We connect restaurants, charities, and users to fight food waste and
           create a positive impact on communities and the environment.
         </p>
@@ -47,11 +47,13 @@ const WhyChooseUs = () => {
         {benefits.map((benefit, index) => (
           <div
             key={index}
-            className="bg-base-200 p-8 rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 flex flex-col items-center text-center"
+            className="bg-base-200 p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 flex flex-col items-center text-center border-t-4 border-primary/40"
           >
             <div className="mb-4">{benefit.icon}</div>
-            <h3 className="text-2xl font-semibold mb-2">{benefit.title}</h3>
-            <p className="opacity-80">{benefit.description}</p>
+            <h3 className="card-title text-lg font-semibold">
+              {benefit.title}
+            </h3>
+            <p className="mt-2 text-sm opacity-80">{benefit.description}</p>
           </div>
         ))}
       </div>

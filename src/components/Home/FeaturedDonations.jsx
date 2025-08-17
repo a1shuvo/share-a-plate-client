@@ -35,7 +35,7 @@ const FeaturedDonations = () => {
           {donations.map((donation) => (
             <div
               key={donation._id}
-              className="card bg-base-200 shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1 border border-base-200 rounded-xl overflow-hidden"
+              className="card bg-base-200 shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1 rounded-xl overflow-hidden border-b-4 border-primary/40"
             >
               <figure className="h-52 overflow-hidden">
                 <img

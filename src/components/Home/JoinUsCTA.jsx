@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const JoinUsCTA = () => {
   return (
-    <section className="relative overflow-hidden px-4 md:px-8 lg:px-12 py-24 bg-gradient-to-br from-base-200 via-base-100 to-base-200">
+    <section className="relative overflow-hidden px-4 md:px-8 lg:px-12 py-16 bg-gradient-to-br from-base-200 via-base-100 to-base-200">
       {/* Subtle background circles */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/4 w-[600px] h-[600px] bg-gradient-to-r from-primary/20 via-secondary/20 rounded-full filter blur-3xl opacity-30 pointer-events-none"></div>
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-l from-secondary/20 via-primary/20 rounded-full filter blur-3xl opacity-30 pointer-events-none"></div>

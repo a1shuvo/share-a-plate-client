@@ -76,7 +76,7 @@ const AllDonations = () => {
           {sorted.map((donation) => (
             <div
               key={donation._id}
-              className="rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden bg-base-100 border border-base-200"
+              className="rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden bg-base-200 border-b-4 border-primary/40"
             >
               <figure className="h-52 overflow-hidden">
                 <img

@@ -45,7 +45,7 @@ const LatestDonationRequests = () => {
             {requests.map((req) => (
               <div
                 key={req._id}
-                className="card bg-base-200 shadow-md hover:shadow-xl transition duration-300 rounded-lg overflow-hidden group border border-base-200"
+                className="card bg-base-200 shadow-md hover:shadow-xl transition duration-300 rounded-xl overflow-hidden group border-b-4 border-primary/40"
               >
                 <div className="card-body p-5">
                   <div className="flex items-center gap-3 mb-4">

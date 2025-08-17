@@ -14,7 +14,7 @@ const HowItWorks = () => {
       text: "Restaurants or individuals list surplus food with details like type, quantity, and pickup time.",
     },
     {
-      icon: <FaHandsHelping className="text-4xl text-primary" />,
+      icon: <FaHandsHelping className="text-4xl text-secondary" />,
       title: "2. Request & Match",
       text: "Charities and communities request donations, and our system matches them based on location and availability.",
     },
@@ -24,7 +24,7 @@ const HowItWorks = () => {
       text: "Volunteers or assigned riders coordinate pickups and ensure safe delivery to charities.",
     },
     {
-      icon: <FaChartLine className="text-4xl text-primary" />,
+      icon: <FaChartLine className="text-4xl text-secondary" />,
       title: "4. Track the Impact",
       text: "Everyone can track the impact — meals served, food saved, and lives supported in real-time.",
     },
@@ -41,7 +41,7 @@ const HowItWorks = () => {
           </span>
         </h2>
 
-        <p className="mt-3 text-base md:text-lg opacity-80 max-w-2xl mx-auto">
+        <p className="text-base md:text-lg opacity-80 max-w-2xl mx-auto">
           A simple process designed to reduce food waste and connect surplus
           food with people who need it the most.
         </p>
@@ -51,12 +51,10 @@ const HowItWorks = () => {
           {steps.map((step, i) => (
             <div
               key={i}
-              className="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 border-t-4 border-primary/40"
+              className="card bg-base-200 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border-t-4 border-primary/40"
             >
               <div className="card-body items-center text-center">
-                <div className="mb-4 p-4 bg-base-200 rounded-full">
-                  {step.icon}
-                </div>
+                <div className="mb-4 bg-base-200 rounded-full">{step.icon}</div>
                 <h3 className="card-title text-lg font-semibold">
                   {step.title}
                 </h3>
